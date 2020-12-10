@@ -6,7 +6,7 @@ anchors.forEach(a => {
         case 'temperature':
             const convertedValue = convertUnit(a.innerText);
             const conversionElement = createConversionElement(a.innerText, convertedValue);
-            a.parentNode.replaceChild(conversionElement, convertedValue);
+            a.parentNode.replaceChild(conversionElement, a);
             break;
     }
 });
