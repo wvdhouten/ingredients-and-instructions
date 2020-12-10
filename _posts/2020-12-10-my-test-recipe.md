@@ -1,0 +1,18 @@
+---
+layout: post
+title: "My test recipe"
+date: 2020-12-10 22:00:00
+categories: temporary
+ingredients: 
+  tumeric: 1tb
+  sugar: 300gr
+  blood orange: 1
+---
+
+* Preheat the oven to [180c](#temperature).
+* Melt [100gr](#quantity) of the sugar.
+* Wait for [10m](#timer).
+
+Images could be in here too, surely?
+
+[Link to other post]({{ site.baseurl }}{% post_url 2020-12-10-my-test-recipe %})

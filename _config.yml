@@ -1,0 +1,12 @@
+# Site settings
+title: Ingredients & Instructions
+email: ingredients-and-instructions@forwarder.one
+description: >
+  Here you'll find recipes. Only the ingredients and instructions.
+baseurl: "/" # the subpath of your site, e.g. /blog/
+url: "http://wvdhouten.github.io" # the base hostname & protocol for your site
+github_username: wvdhouten
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:title:output_ext
