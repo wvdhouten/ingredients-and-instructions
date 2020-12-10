@@ -16,4 +16,5 @@ function createConversionElement(value, convertedValue) {
     element.classList.add('conversion')
     element.textContent = value;
     element.title = convertedValue;
+    return element;
 }
