@@ -1,6 +1,6 @@
 function convertUnit(input) {
     const regex = /([0-9]+)|([a-zA-Z]+)/g
-    const matches = st.match(regex);
+    const matches = input.match(regex);
     const quantity = matches[0];
     const unit = matches[1];
 
