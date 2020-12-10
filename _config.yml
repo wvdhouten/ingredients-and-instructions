@@ -9,4 +9,4 @@ github_username: wvdhouten
 
 # Build settings
 markdown: kramdown
-permalink: /:year/:title:output_ext
+permalink: /:year/:title

@@ -7,9 +7,13 @@ layout: default
     <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
   </header>
   <article class="post-content">
-    {% for ingredient in page.ingredients %}
-      <p>{{ ingredient[0] }} : {{ ingredient[1] }}</p>
-    {% endfor %}
-    {{ content }}
+    <section class="ingredients">
+      {% for ingredient in page.ingredients %}
+        <div>{{ ingredient[0] }} : <a href="#quantity">{{ ingredient[1] }}</a></div>
+      {% endfor %}
+    </section>
+    <section class="instructions">
+      {{ content }}
+    </section>
   </article>
 </div>

@@ -7,5 +7,5 @@ function convertUnit(input) {
     if (unit === 'c')
         return quantity * 1.8 + 32 + 'f';
 
-    return quantity;
+    return input;
 }

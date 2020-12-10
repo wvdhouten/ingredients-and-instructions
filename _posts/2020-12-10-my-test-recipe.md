@@ -1,11 +1,15 @@
 ---
 layout: post
 title: "My test recipe"
+description: "A short description"
 date: 2020-12-10 22:00:00
 categories: temporary
+vegetarian: true
+vegan: false
 ingredients: 
-  tumeric: 1 tb
-  sugar: 300 gr
+  tumeric: 1tb
+  sugar: 300gr
+  water: 3l
   blood orange: 1
 ---
 
