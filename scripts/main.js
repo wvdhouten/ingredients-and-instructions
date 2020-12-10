@@ -1,6 +1,10 @@
 const anchors = document.querySelectorAll('a');
 anchors.forEach(a => {
-    if (a.href.startsWith('#')) {
-        console.log(a);
+    hash = a.href.split('#')[1];
+    switch (hash){
+        case 'temperature':
+            const convertedValue = convertUnit(a.innerText);
+            console.log(convertedValue);
+            break;
     }
 });

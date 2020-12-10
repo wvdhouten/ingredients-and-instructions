@@ -4,8 +4,8 @@ title: "My test recipe"
 date: 2020-12-10 22:00:00
 categories: temporary
 ingredients: 
-  tumeric: 1tb
-  sugar: 300gr
+  tumeric: 1 tb
+  sugar: 300 gr
   blood orange: 1
 ---
 
