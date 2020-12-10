@@ -5,7 +5,7 @@ function convertUnit(input) {
     const unit = matches[1];
 
     if (unit === 'c')
-        return quantity * 1.8 + 32 + f;
+        return quantity * 1.8 + 32 + 'f';
 
     return quantity;
 }
