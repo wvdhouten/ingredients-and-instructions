@@ -32,33 +32,43 @@ function createTimerElement(value) {
 
 let timer;
 
-function startTimer(value){
-    if (timer){
+function resetTimer()
+{
+    if (timer)
         window.clearInterval(timer);
-    }
 
-    const timerRegex = /((\d+)h)?((\d+)m)?((\d+)s?)?/;
-    const match = value.match(timerRegex);
+    document.querySelector('#timer')?.remove();
+}
 
+function parseDuration(value){
+    const match = value.match(/((\d+)h)?((\d+)m)?((\d+)s?)?/);
     let duration = 0;
     if (match[1])
         duration += parseInt(match[2]) * 3600; 
     if (match[3])
         duration += parseInt(match[4]) * 60; 
     if (match[5])
-        duration += parseInt(match[6]); 
+        duration += parseInt(match[6]);
+    return duration; 
+}
 
-    console.log(match);
-    console.log(duration);
+function startTimer(value){
+    resetTimer();
 
+    const timerElement = document.createElement('div');
+    timerElement.id = 'timer';
+    document.body.appendChild(timerElement)
+
+    const duration = parseDuration(value);
     const start = Date.now();
-    timer = setInterval(function() {
+    timer = setInterval(() => {
         const delta = Date.now() - start;
-        const timeRemaining = duration - delta / 1000;
-        console.log(timeRemaining);
-        if (timeRemaining <= 0){
-            clearInterval(timer);
-            alert('done');
-        }
-    }, 1000);
+        const secondsRemaining = duration - delta / 1000;
+        const timeRemaining = new Date(secondsRemaining * 1000).toISOString().substr(11, 8)
+
+        timerElement.innerText = timeRemaining;
+
+        if (secondsRemaining <= 0)
+            resetTimer();
+    }, 100);
 }
