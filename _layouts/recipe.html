@@ -1,0 +1,20 @@
+---
+layout: main
+---
+<div class="recipe">
+  <header class="recipe-header">
+    <h1 class="recipe-title">{{ page.title }}</h1>
+    <h1 class="recipe-description">{{ page.description }}</h1>
+    <p class="recipe-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+  </header>
+  <article class="recipe-content">
+    <section class="ingredients">
+      {% for ingredient in page.ingredients %}
+        <div>{{ ingredient[0] }} : <a href="#quantity">{{ ingredient[1] }}</a></div>
+      {% endfor %}
+    </section>
+    <section class="instructions">
+      {{ content }}
+    </section>
+  </article>
+</div>

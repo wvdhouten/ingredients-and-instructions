@@ -1,8 +1,9 @@
 ---
-layout: post
+layout: recipe
 title: "My test recipe"
 description: "A short description"
 date: 2020-12-10 22:00:00
+author: wvdhouten
 categories: temporary
 vegetarian: true
 vegan: false
@@ -15,7 +16,7 @@ ingredients:
 
 * Preheat the oven to [180c](#temperature).
 * Melt [100gr](#quantity) of the sugar.
-* Wait for [10m](#timer).
+* Wait for [1h10m30s](#timer).
 
 Images could be in here too, surely?
 
