@@ -86,8 +86,6 @@
     }
 }
 
-
-
 /**
  * Site footer
  */
@@ -140,8 +138,6 @@
     }
 }
 
-
-
 /**
  * Page content
  */
@@ -172,10 +168,8 @@
     font-size: 24px;
 }
 
-
-
 /**
- * Posts
+ * Recipes
  */
 .recipe-header {
     margin-bottom: $spacing-unit;
@@ -192,7 +186,17 @@
 }
 
 .recipe-content {
+    display: flex;
     margin-bottom: $spacing-unit;
+
+    .ingredients {
+        background: #fff;
+        border-right: 1px solid #000;
+    }   
+    
+    .instructions {
+        flex: 1;
+    }
 
     h2 {
         font-size: 32px;
