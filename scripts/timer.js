@@ -39,7 +39,7 @@ class Timer {
             return duration;
 
         const match = duration.match(/((\d+)h)?((\d+)m)?((\d+)s?)?/);
-        let duration = 0;
+        duration = 0;
         if (match[1])
             duration += parseInt(match[2]) * 3600; 
         if (match[3])
