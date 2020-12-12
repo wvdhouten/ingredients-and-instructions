@@ -42,11 +42,11 @@ function startTimer(value){
 
     let duration = 0;
     if (match[1])
-        duration += match[2] * 3600; 
+        duration += parseInt(match[2]) * 3600; 
     if (match[3])
-        duration += match[4] * 60; 
+        duration += parseInt(match[4]) * 60; 
     if (match[5])
-        duration += match[6]; 
+        duration += parseInt(match[6]); 
 
     console.log(match);
     console.log(duration);
@@ -56,8 +56,9 @@ function startTimer(value){
         const delta = Date.now() - start;
         const timeRemaining = duration - delta / 1000;
         console.log(timeRemaining);
-
-        if (timeRemaining <= duration);
-        clearInterval(timer);
+        if (timeRemaining <= 0){
+            clearInterval(timer);
+            alert('done');
+        }
     }, 1000);
 }

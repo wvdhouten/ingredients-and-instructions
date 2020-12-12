@@ -16,7 +16,7 @@ ingredients:
 
 * Preheat the oven to [180c](#temperature).
 * Melt [100gr](#quantity) of the sugar.
-* Wait for [1h30s](#timer).
+* Wait for [1m30s](#timer).
 
 Images could be in here too, surely?
 
