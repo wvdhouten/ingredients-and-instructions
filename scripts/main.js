@@ -9,9 +9,8 @@ anchors.forEach(a => {
             a.parentNode.replaceChild(conversionElement, a);
             break;
         case 'timer':
-            const value = a.innerHTML;
-            const conversionElement = createTimerElement(a.innerText);
-            a.parentNode.replaceChild(conversionElement, a);
+            const timerElement = createTimerElement(a.innerText);
+            a.parentNode.replaceChild(timerElement, a);
     }
 });
 
