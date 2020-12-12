@@ -177,11 +177,11 @@
 /**
  * Posts
  */
-.post-header {
+.recipe-header {
     margin-bottom: $spacing-unit;
 }
 
-.post-title {
+.recipe-title {
     font-size: 42px;
     letter-spacing: -1px;
     line-height: 1;
@@ -191,7 +191,7 @@
     }
 }
 
-.post-content {
+.recipe-content {
     margin-bottom: $spacing-unit;
 
     h2 {
@@ -221,5 +221,10 @@
     .conversion {
         cursor: help;
         border-bottom: 1px solid orange;
+    }
+
+    .timer {
+        cursor: help;
+        border-bottom: 1px solid royalblue;
     }
 }

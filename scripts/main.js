@@ -37,14 +37,27 @@ function startTimer(value){
         window.clearInterval(timer);
     }
 
-    const timerRegex = /(\d+h)?(\d+m)?(\d+s)?/;
+    const timerRegex = /((\d+)h)?((\d+)m)?((\d+)s?)?/;
     const match = value.match(timerRegex);
 
-    console.log(match);
+    let duration = 0;
+    if (match[1])
+        duration += match[2] * 3600; 
+    if (match[3])
+        duration += match[4] * 60; 
+    if (match[5])
+        duration += match[6]; 
 
-    var start = Date.now();
+    console.log(match);
+    console.log(duration);
+
+    const start = Date.now();
     timer = setInterval(function() {
-        var delta = Date.now() - start;
-        output(Math.floor(delta / 1000));
+        const delta = Date.now() - start;
+        const timeRemaining = duration - delta / 1000;
+        console.log(timeRemaining);
+
+        if (timeRemaining <= duration);
+        clearInterval(timer);
     }, 1000);
 }
