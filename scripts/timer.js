@@ -10,7 +10,7 @@ class Timer {
     }
 
     start(duration) {
-        this.resetTimer();
+        this.clear();
 
         const timerElement = document.createElement('div');
         timerElement.id = 'timer';
@@ -26,7 +26,7 @@ class Timer {
             timerElement.innerText = timeRemaining;
     
             if (secondsRemaining <= 0)
-                resetTimer();
+                this.clear();
         }, 100);
     }
 
