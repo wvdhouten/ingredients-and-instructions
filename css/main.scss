@@ -34,7 +34,7 @@ $on-large: 1200px; // 1140px usable.
 }
 
 @mixin media-query-min($device) {
-    @media screen and (max-width: $device) {
+    @media screen and (min-width: $device) {
         @content;
     }
 }
