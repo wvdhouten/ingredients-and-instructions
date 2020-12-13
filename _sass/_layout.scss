@@ -41,7 +41,7 @@
         }
     }
 
-    @include until-media-query($on-small) {
+    @include until-media-query($on-xsmall) {
         position: absolute;
         top: 9px;
         right: 30px;
