@@ -132,19 +132,19 @@
      margin-left: auto;
      @extend %clearfix;
 
-     @include media-query($on-xsmall) {
+     @include media-query-min($on-small) {
         max-width: 540px;
      }
 
-     @include media-query($on-small) {
+     @include media-query-min($on-medium) {
         max-width: 720px;
      }
 
-     @include media-query($on-medium) {
+     @include media-query-min($on-large) {
         max-width: 960px;
      }
 
-     @include media-query($on-large) {
+     @include media-query-min($on-large) {
         max-width: 1140px;
      }
  }

@@ -27,7 +27,13 @@ $on-small: 768px; // 720px usable.
 $on-medium: 992px; // 960px usable.
 $on-large: 1200px; // 1140px usable.
 
-@mixin media-query($device) {
+@mixin media-query-max($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+@mixin media-query-min($device) {
     @media screen and (max-width: $device) {
         @content;
     }

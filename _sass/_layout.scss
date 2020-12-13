@@ -41,7 +41,7 @@
         }
     }
 
-    @include media-query($on-xsmall) {
+    @include media-query-max($on-xsmall) {
         position: absolute;
         top: 9px;
         right: 30px;
