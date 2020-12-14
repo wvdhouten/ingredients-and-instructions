@@ -14,11 +14,11 @@ layout: main
     <section class="ingredients">
       {% for ingredient in page.ingredients %}
         <div>
-          <a href="#quantity" class="quantity">{{ ingredient[1] }}</a>
-          <span class="checkbox">
+          <label class="checkbox">
             <input type="checkbox" checked="checked" />
             <span class="checkmark"></span>
-          </span>
+          </label>
+          <a href="#quantity" class="quantity">{{ ingredient[1] }}</a>
           <span class="ingredient">{{ ingredient[0] }}</span>
         </div>
       {% endfor %}

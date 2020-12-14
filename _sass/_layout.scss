@@ -237,6 +237,10 @@
 
         &:checked ~ .checkmark {
             background-color: #2196F3;
+
+            &:after {
+                display: block;
+              }
         }
     }
 
@@ -267,9 +271,5 @@
 
     &:hover input ~ .checkmark{
         background-color: #ccc;
-
-        &:after {
-            display: block;
-          }
     }
   }
