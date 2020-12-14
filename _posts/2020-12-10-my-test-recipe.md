@@ -7,6 +7,9 @@ author: wvdhouten
 categories: temporary
 vegetarian: true
 vegan: false
+time: 1h1m30s
+activeTime: 1h
+servings: 3
 ingredients: 
   tumeric: 1tb
   sugar: 300gr

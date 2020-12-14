@@ -4,15 +4,23 @@ layout: main
 <div class="recipe">
   <header class="recipe-header">
     <div class="wrapper">
+      <div><span>Time: {{ page.time }}({{ page.activeTime }})</span> | <span>Servings: {{ page.servings }}</span></div>
       <h1 class="recipe-title">{{ page.title }}</h1>
       <h3 class="recipe-description">{{ page.description }}</h3>
-      <p class="recipe-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+      <p class="recipe-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}</p>
     </div>
   </header>
   <article class="recipe-content wrapper">
     <section class="ingredients">
       {% for ingredient in page.ingredients %}
-        <div>{{ ingredient[0] }} : <a href="#quantity">{{ ingredient[1] }}</a></div>
+        <div>
+          <a href="#quantity">{{ ingredient[1] }}</a>
+          <span class="ingredient">{{ ingredient[0] }}</span>
+          <span class="checkbox">
+            <input type="checkbox" checked="checked" />
+            <span class="checkmark"></span>
+          </span>
+        </div>
       {% endfor %}
     </section>
     <section class="instructions">

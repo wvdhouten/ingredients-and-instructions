@@ -158,6 +158,10 @@
  */
 .recipe-header {
     margin-bottom: $spacing-unit;
+
+    .wrapper {
+        display: flex;
+    }
 }
 
 .recipe-title {
@@ -173,6 +177,14 @@
     .ingredients {
         background: #fff;
         border-right: 1px solid #000;
+
+        > div {
+            display: flex;
+
+            .ingredient {
+                flex: 1;
+            }
+        }
     }   
     
     .instructions {
