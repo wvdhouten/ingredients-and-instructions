@@ -1,0 +1,21 @@
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+:root {
+    $default-accent: #ff0000;
+    --background-color: #ffffff;
+    --color: #000000;
+    --accent-color: $default-accent;
+    --accent-color-light: lighten($default-accent, 40%);
+    --accent-color-dark: darken($default-accent, 40%);
+}
+
+body.dark {
+    $dark-accent: #00ff00;
+    --background-color: #000000;
+    --color: #ffffff;
+    --accent-color: $dark-accent;
+    --accent-color-light: lighten($dark-accent, 40%);
+    --accent-color-dark: darken($dark-accent, 40%);
+}
