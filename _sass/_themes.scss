@@ -6,6 +6,7 @@ $accent: #2a7ae2;
 :root {
     --background-color: #fdfdfd;
     --text-color: #111111;
+    --test: $grey-color;
     --accent-color: $accent;
     --accent-color-light: lighten($accent, 40%);
     --accent-color-dark: darken($accent, 25%);
