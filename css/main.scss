@@ -11,6 +11,10 @@ $base-line-height: 1.5;
 
 $spacing-unit:     30px;
 
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
 $on-palm:          600px;
 $on-laptop:        800px;
 
@@ -32,4 +36,4 @@ $on-large: 1200px; // 1140px usable.
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import "themes", "base", "layout", "syntax-highlighting";
+@import "base", "layout", "syntax-highlighting";

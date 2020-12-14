@@ -14,8 +14,8 @@
      font-size: $base-font-size;
      line-height: $base-line-height;
      font-weight: 300;
-     color: $text-color;
-     background-color: $background-color;
+     color: var(--text-color);
+     background-color: var(--background-color);
      -webkit-text-size-adjust: 100%;
  }
  
@@ -70,15 +70,15 @@
   * Links
   */
  a {
-     color: $brand-color;
+     color: var(--accent-color);
      text-decoration: none;
  
      &:visited {
-         color: darken($brand-color, 15%);
+         color: var(--accent-color-dark);
      }
  
      &:hover {
-         color: $text-color;
+         color: var(--text-color);
          text-decoration: underline;
      }
  }
