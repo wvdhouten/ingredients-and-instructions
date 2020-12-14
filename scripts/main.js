@@ -3,14 +3,14 @@ anchors.forEach(a => {
     hash = a.href.split('#')[1];
     switch (hash){
         case 'quantity':
-            const convertedValue = unitConverter.convertQuantity(a.innerText);
-            const conversionElement = createConversionElement(a.innerText, convertedValue);
+            let convertedValue = unitConverter.convertQuantity(a.innerText);
+            let conversionElement = createConversionElement(a.innerText, convertedValue);
             a.classList.forEach(c => conversionElement.classList.add(c));
             a.parentNode.replaceChild(conversionElement, a);
             break;
         case 'temperature':
-            const convertedValue = unitConverter.convertTemperature(a.innerText);
-            const conversionElement = createConversionElement(a.innerText, convertedValue);
+            convertedValue = unitConverter.convertTemperature(a.innerText);
+            conversionElement = createConversionElement(a.innerText, convertedValue);
             a.parentNode.replaceChild(conversionElement, a);
             break;
         case 'timer':

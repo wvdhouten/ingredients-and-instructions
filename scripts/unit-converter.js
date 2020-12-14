@@ -50,7 +50,7 @@ class UnitConverter {
     }
 
     __conversionResult(mValue, mUnit, iValue, iUnit){
-        return { mValue = mValue, mUnit = mUnit, iValue = iValue, iUnit = iUnit };
+        return { mValue: mValue, mUnit: mUnit, iValue: iValue, iUnit: iUnit };
     }
 }
 
