@@ -5,6 +5,7 @@ anchors.forEach(a => {
         case 'quantity':
             const convertedValue = unitConverter.convertQuantity(a.innerText);
             const conversionElement = createConversionElement(a.innerText, convertedValue);
+            a.classList.forEach(c => conversionElement.classList.add(c));
             a.parentNode.replaceChild(conversionElement, a);
             break;
         case 'temperature':
