@@ -1,14 +1,15 @@
 ---
 layout: recipe
 title: "My test recipe"
+author: wvdhouten
 description: "A short description"
 date: 2020-12-10 22:00:00
-author: wvdhouten
 categories: temporary
 vegetarian: true
 vegan: false
-time: 1h1m30s
-activeTime: 1h
+prepTime: 1h
+cookTime: 1h1m30s
+difficulty: 2
 servings: 3
 ingredients: 
   tumeric: 1tb
