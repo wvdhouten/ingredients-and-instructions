@@ -234,6 +234,10 @@
         cursor: pointer;
         height: 0;
         width: 0;
+
+        &:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
     }
 
     .checkmark {
@@ -268,8 +272,4 @@
             display: block;
           }
     }
-
-    &:checked ~ .checkmark {
-        background-color: #2196F3;
-      }
   }
