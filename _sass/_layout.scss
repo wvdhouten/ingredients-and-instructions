@@ -228,6 +228,10 @@
     font-size: 22px;
     user-select: none;
 
+    &:hover input ~ .checkmark{
+        background-color: #ccc;
+    }
+
     input {
         position: absolute;
         opacity: 0;
@@ -268,8 +272,4 @@
             display: none;
           }
       }
-
-    &:hover input ~ .checkmark{
-        background-color: #ccc;
-    }
   }
