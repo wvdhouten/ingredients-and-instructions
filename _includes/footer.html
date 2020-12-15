@@ -6,14 +6,14 @@
         <ul class="social-media-list">
           <li>
             <a href="mailto:{{ site.email }}">
-              <span class="icon icon--email"><svg><use href="/assets/icons.svg#email"></use></svg></span>
+              <span class="icon icon--email"><svg><use href="{{ "/assets/icons.svg#email" | prepend: site.baseurl }}"></use></svg></span>
               <span class="username">{{ site.email }}</span>
             </a>
           </li>
           {% if site.github_username %}
           <li>
             <a href="https://github.com/{{ site.github_username }}">
-              <span class="icon icon--github"><svg><use href="/assets/icons.svg#github"></use></svg></span>
+              <span class="icon icon--github"><svg><use href="{{ "/assets/icons.svg#github" | prepend: site.baseurl }}"></use></svg></span>
               <span class="username">{{ site.github_username }}</span>
             </a>
           </li>
@@ -21,7 +21,7 @@
           {% if site.twitter_username %}
           <li>
             <a href="https://twitter.com/{{ site.twitter_username }}">
-              <span class="icon icon--twitter"><svg><use href="/assets/icons.svg#twitter"></use></svg></span>
+              <span class="icon icon--twitter"><svg><use href="{{ "/assets/icons.svg#twitter" | prepend: site.baseurl }}"></use></svg></span>
               <span class="username">{{ site.twitter_username }}</span>
             </a>
           </li>
