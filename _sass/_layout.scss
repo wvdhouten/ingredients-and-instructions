@@ -211,58 +211,97 @@
     }
 }
 
- /* Customize the label (the container) */
- .checkbox {
+/* Styling Checkbox Starts */
+.checkbox {
     display: block;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+    margin: auto;
     cursor: pointer;
     font-size: 22px;
-    user-select: none;
+    line-height: 24px;
+    height: 24px;
+    width: 24px;
+    clear: both;
 
-    &:hover input ~ .checkmark{
-        background-color: var(--accent-color-light);
-    }
-
-    input {
+    input[type="checkbox"] {
         position: absolute;
         opacity: 0;
         cursor: pointer;
-        height: 0;
-        width: 0;
 
-        &:checked ~ .checkmark {
-            background-color: var(--accent-color);
+        &:checked ~ span {
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            transform: rotate(0deg) scale(1);
+            opacity:1;
+            border: 2px solid #FFFFFF;
 
-            &:after {
-                display: block;
+&::before {
+    left: -3px;
+    top: -3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    -webkit-transform: scale(3);
+    -ms-transform: scale(3);
+    transform: scale(3);
+    opacity:0;
+    z-index: 999;
+    transition: all 0.3s ease-out;
+}
+
+            &::after {
+                -webkit-transform: rotate(45deg) scale(1);
+                -ms-transform: rotate(45deg) scale(1);
+                transform: rotate(45deg) scale(1);
+                opacity:1;
+                left: 8px;
+                top: 3px;
+                width: 6px;
+                height: 12px;
+                border: solid #009BFF;
+                border-width: 0 2px 2px 0;
+                background-color: transparent;
+                border-radius: 0;
               }
         }
     }
 
-    .checkmark {
+    span {
         position: absolute;
-        top: 0;
-        left: 0;
-        height: 25px;
-        width: 25px;
-        background-color: var(--background-color);
+        top: 0px;
+        left: 0px;
+        height: 24px;
+        width: 24px;
+        background-color: transparent;
+        border-radius: 5px;
+        transition: all 0.3s ease-out;
+        border: 2px solid #FFFFFF;
 
-        &:after {
-            left: 9px;
-            top: 5px;
-            width: 5px;
-            height: 10px;
-            border: solid var(--background-color);
-            border-width: 0 3px 3px 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+&::before {
+    position: absolute;
+    content: "";
+    left: 10px;
+    top: 10px;
+    width: 0px;
+    height: 0px;
+    border-radius: 5px;
+    border: 2px solid #FFFFFF;
+    transform: scale(0);  
+}
 
-            content: "";
+        &::after {
             position: absolute;
-            display: none;
-          }
-      }
-  }
+            content: "";
+            left: 12px;
+            top: 12px;
+            height: 0px;
+            width: 0px;
+            border-radius: 5px;
+            border: solid #009BFF;
+            border-width: 0 3px 3px 0;
+            transform: rotate(0deg) scale(0);
+            opacity:1;
+            transition: all 0.3s ease-out;
+    }
+}
+}
