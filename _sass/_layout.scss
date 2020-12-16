@@ -1,307 +1,292 @@
-/**
- * Site header
- */
- .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
-    min-height: 56px;
+/* Site header */
+.site-header {
+  border-top: 5px solid $grey-color-dark;
+  border-bottom: 1px solid $grey-color-light;
+  min-height: 56px;
 
-    // Positioning context for the mobile navigation icon
-    position: relative;
+  // Positioning context for the mobile navigation icon
+  position: relative;
 }
 
 .site-title {
-    font-size: 26px;
-    line-height: 56px;
-    letter-spacing: -1px;
-    margin-bottom: 0;
-    float: left;
+  font-size: 26px;
+  line-height: 56px;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  float: left;
 
-    &,
-    &:visited {
-        color: $grey-color-dark;
-    }
+  &,
+  &:visited {
+    color: $grey-color-dark;
+  }
 }
 
 .site-nav {
-    float: right;
-    line-height: 56px;
+  float: right;
+  line-height: 56px;
+
+  .menu-icon {
+    display: none;
+  }
+
+  .page-link {
+    color: var(--text-color);
+    line-height: $base-line-height;
+
+    // Gaps between nav items, but not on the first one
+    &:not(:first-child) {
+      margin-left: 20px;
+    }
+  }
+
+  @include media-query-max($on-xsmall) {
+    position: absolute;
+    top: 9px;
+    right: 30px;
+    background-color: var(--background-color);
+    border: 1px solid $grey-color-light;
+    border-radius: 5px;
+    text-align: right;
 
     .menu-icon {
-        display: none;
+      display: block;
+      float: right;
+      width: 36px;
+      height: 26px;
+      line-height: 0;
+      padding-top: 10px;
+      text-align: center;
+
+      > svg {
+        width: 18px;
+        height: 15px;
+
+        path {
+          fill: $grey-color-dark;
+        }
+      }
+    }
+
+    .trigger {
+      clear: both;
+      display: none;
+    }
+
+    &:hover .trigger {
+      display: block;
+      padding-bottom: 5px;
     }
 
     .page-link {
-        color: var(--text-color);
-        line-height: $base-line-height;
-
-        // Gaps between nav items, but not on the first one
-        &:not(:first-child) {
-            margin-left: 20px;
-        }
+      display: block;
+      padding: 5px 10px;
     }
-
-    @include media-query-max($on-xsmall) {
-        position: absolute;
-        top: 9px;
-        right: 30px;
-        background-color: var(--background-color);
-        border: 1px solid $grey-color-light;
-        border-radius: 5px;
-        text-align: right;
-
-        .menu-icon {
-            display: block;
-            float: right;
-            width: 36px;
-            height: 26px;
-            line-height: 0;
-            padding-top: 10px;
-            text-align: center;
-
-            > svg {
-                width: 18px;
-                height: 15px;
-
-                path {
-                    fill: $grey-color-dark;
-                }
-            }
-        }
-
-        .trigger {
-            clear: both;
-            display: none;
-        }
-
-        &:hover .trigger {
-            display: block;
-            padding-bottom: 5px;
-        }
-
-        .page-link {
-            display: block;
-            padding: 5px 10px;
-        }
-    }
+  }
 }
 
-/**
- * Site footer
- */
+/* Site footer */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
-    padding: $spacing-unit 0;
+  border-top: 1px solid $grey-color-light;
+  padding: $spacing-unit 0;
 }
 
 .footer-heading {
-    font-size: 18px;
-    margin-bottom: $spacing-unit / 2;
+  font-size: 18px;
+  margin-bottom: $spacing-unit / 2;
 }
 
 .contact-list,
 .social-media-list {
-    list-style: none;
-    margin-left: 0;
+  list-style: none;
+  margin-left: 0;
 }
 
 .footer-col-wrapper {
-    font-size: 15px;
-    color: $grey-color;
-    margin-left: -$spacing-unit / 2;
-    @extend %clearfix;
+  font-size: 15px;
+  color: $grey-color;
+  margin-left: -$spacing-unit / 2;
+  @extend %clearfix;
 }
 
 .footer-col {
-    float: left;
-    margin-bottom: $spacing-unit / 2;
-    padding-left: $spacing-unit / 2;
+  float: left;
+  margin-bottom: $spacing-unit / 2;
+  padding-left: $spacing-unit / 2;
 }
 
 .footer-col {
-    width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-    width:         calc(50% - (#{$spacing-unit} / 2));
+  width: -webkit-calc(50% - (#{$spacing-unit} / 2));
+  width: calc(50% - (#{$spacing-unit} / 2));
 }
 
-/**
- * Page content
- */
+/* Page content */
 .page-content {
-    padding: $spacing-unit 0;
+  padding: $spacing-unit 0;
 }
 
 .page-heading {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .post-list {
-    margin-left: 0;
-    list-style: none;
+  margin-left: 0;
+  list-style: none;
 
-    > li {
-        margin-bottom: $spacing-unit;
-    }
+  > li {
+    margin-bottom: $spacing-unit;
+  }
 }
 
 .post-meta {
-    font-size: $small-font-size;
-    color: $grey-color;
+  font-size: $small-font-size;
+  color: $grey-color;
 }
 
 .post-link {
-    display: block;
-    font-size: 24px;
+  display: block;
+  font-size: 24px;
 }
 
-/**
- * Recipes
- */
+/* Recipes */
 .recipe-header {
-    margin-bottom: $spacing-unit;
+  margin-bottom: $spacing-unit;
 }
 
 .recipe-title {
-    font-size: 42px;
-    letter-spacing: -1px;
-    line-height: 1;
+  font-size: 42px;
+  letter-spacing: -1px;
+  line-height: 1;
 }
 
 .recipe-content {
-    display: flex;
-    margin-bottom: $spacing-unit;
+  display: flex;
+  margin-bottom: $spacing-unit;
 
-    .ingredients {
-       > div {
-            display: flex;
+  .ingredients {
+    > div {
+      display: flex;
 
-            .quantity {
-                width: 100px
-            }
+      .quantity {
+        width: 100px;
+      }
 
-            .ingredient {
-                flex: 1;
-            }
-        }
-    }   
-    
-    .instructions {
+      .ingredient {
         flex: 1;
+      }
     }
+  }
 
-    h2 {
-        font-size: 32px;
-    }
+  .instructions {
+    flex: 1;
+  }
 
-    h3 {
-        font-size: 26px;
-    }
+  h2 {
+    font-size: 32px;
+  }
 
-    h4 {
-        font-size: 20px;
-    }
+  h3 {
+    font-size: 26px;
+  }
 
-    .conversion {
-        cursor: help;
-        border-bottom: 1px solid orange;
-    }
+  h4 {
+    font-size: 20px;
+  }
 
-    .timer {
-        cursor: help;
-        border-bottom: 1px solid royalblue;
-    }
+  .conversion {
+    cursor: help;
+    border-bottom: 1px solid orange;
+  }
+
+  .timer {
+    cursor: help;
+    border-bottom: 1px solid royalblue;
+  }
 }
 
-/* Styling Checkbox Starts */
+/* Checkbox */
 .checkbox {
-    display: block;
-    position: relative;
-    margin: auto;
-    cursor: pointer;
-    font-size: 22px;
-    line-height: 24px;
-    height: 24px;
-    width: 24px;
-    clear: both;
+  display: block;
+  position: relative;
+  margin: auto;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 25px;
+  height: 25px;
+  width: 25px;
+  clear: both;
 
-    input[type="checkbox"] {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-
-        &:checked ~ span {
-            background-color: #FFFFFF;
-            border-radius: 5px;
-            transform: rotate(0deg) scale(1);
-            opacity:1;
-            border: 2px solid #FFFFFF;
-
-&::before {
-    left: -3px;
-    top: -3px;
-    width: 24px;
-    height: 24px;
-    border-radius: 5px;
-    -webkit-transform: scale(3);
-    -ms-transform: scale(3);
-    transform: scale(3);
-    opacity:0;
-    z-index: 999;
-    transition: all 0.3s ease-out;
-}
-
-            &::after {
-                -webkit-transform: rotate(45deg) scale(1);
-                -ms-transform: rotate(45deg) scale(1);
-                transform: rotate(45deg) scale(1);
-                opacity:1;
-                left: 8px;
-                top: 3px;
-                width: 6px;
-                height: 12px;
-                border: solid #009BFF;
-                border-width: 0 2px 2px 0;
-                background-color: transparent;
-                border-radius: 0;
-              }
-        }
-    }
-
-    span {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        height: 24px;
-        width: 24px;
-        background-color: transparent;
-        border-radius: 5px;
-        transition: all 0.3s ease-out;
-        border: 2px solid #FFFFFF;
-
-&::before {
+  span {
     position: absolute;
-    content: "";
-    left: 10px;
-    top: 10px;
-    width: 0px;
-    height: 0px;
+    top: 0px;
+    left: 0px;
+    height: 21px;
+    width: 21px;
+    background-color: transparent;
     border-radius: 5px;
-    border: 2px solid #FFFFFF;
-    transform: scale(0);  
-}
+    transition: all 0.1s ease-out;
+    border: 2px solid var(--accent-color);
 
-        &::after {
-            position: absolute;
-            content: "";
-            left: 12px;
-            top: 12px;
-            height: 0px;
-            width: 0px;
-            border-radius: 5px;
-            border: solid #009BFF;
-            border-width: 0 3px 3px 0;
-            transform: rotate(0deg) scale(0);
-            opacity:1;
-            transition: all 0.3s ease-out;
+    &::before {
+      position: absolute;
+      content: "";
+      left: 10px;
+      top: 10px;
+      width: 0px;
+      height: 0px;
+      border-radius: 5px;
+      border: 2px solid #ffffff;
+      transform: scale(0);
     }
-}
+
+    &::after {
+      position: absolute;
+      content: "";
+      left: 12px;
+      top: 12px;
+      height: 0px;
+      width: 0px;
+      border-radius: 5px;
+      border: solid var(--accent-color);
+      border-width: 0 3px 3px 0;
+      transform: rotate(0deg) scale(0);
+      opacity: 1;
+      transition: all 0.3s ease-out;
+    }
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked ~ span {
+      background-color: var(--background-color);
+      transform: rotate(0deg) scale(1);
+      opacity: 1;
+
+      &::before {
+        left: -3px;
+        top: -3px;
+        width: 24px;
+        height: 24px;
+        border-radius: 5px;
+        transform: scale(3);
+        opacity: 0;
+        z-index: 999;
+        transition: all 0.1s ease-out;
+      }
+
+      &::after {
+        transform: rotate(45deg) scale(1);
+        opacity: 1;
+        left: 8px;
+        top: 3px;
+        width: 6px;
+        height: 12px;
+        border-width: 0 2px 2px 0;
+        background-color: transparent;
+        border-radius: 0;
+      }
+    }
+  }
 }

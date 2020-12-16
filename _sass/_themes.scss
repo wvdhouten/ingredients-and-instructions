@@ -4,18 +4,18 @@ $grey-color-dark: darken($grey-color, 25%);
 
 $accent: #2a7ae2;
 :root {
-    --background-color: #fdfdfd;
-    --text-color: #111111;
-    --accent-color: #{$accent};
-    --accent-color-light: #{lighten($accent, 40%)};
-    --accent-color-dark: #{darken($accent, 25%)};
+  --background-color: #fdfdfd;
+  --text-color: #111111;
+  --accent-color: #{$accent};
+  --accent-color-light: #{lighten($accent, 40%)};
+  --accent-color-dark: #{darken($accent, 25%)};
 }
 
 $accent: #00ff00;
 body[theme="dark"] {
-    --background-color: #111111;
-    --text-color: #fdfdfd;
-    --accent-color: #{$accent};
-    --accent-color-light: #{lighten($accent, 40%)};
-    --accent-color-dark: #{darken($accent, 25%)};
+  --background-color: #111111;
+  --text-color: #fdfdfd;
+  --accent-color: #{$accent};
+  --accent-color-light: #{lighten($accent, 40%)};
+  --accent-color-dark: #{darken($accent, 25%)};
 }
