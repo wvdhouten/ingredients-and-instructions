@@ -4,15 +4,31 @@ layout: main
 <div class="recipe">
   <header class="recipe-header">
     <div class="wrapper">
+      <span>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} by <a href="https://github.com/{{ page.author }}"></a>
+        <span class="icon icon--github"><svg><use href="{{ "/assets/icons.svg#github" | prepend: site.baseurl }}"></use></svg></span>
+        <span class="username">{{ page.author }}</span>
+      </a>{% endif %}</span>
       <h1 class="recipe-title">{{ page.title }}</h1>
-      <div>
-        {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} by <a href="https://github.com/{{ page.author }}">
-          <span class="icon icon--github"><svg><use href="{{ "/assets/icons.svg#github" | prepend: site.baseurl }}"></use></svg></span>
-          <span class="username">{{ page.author }}</span>
-        </a>{% endif %}
-      </div>
+      <span>{{ page.description }}</span>
+      <ul class="recipe-properties">
+        <li>
+          <span>Preparation Time</span>
+          <strong>{{ page.prepTime }}</strong>
+        </li>
+        <li>
+          <span>Cooking Time</span>
+          <strong>{{ page.cookTime }}</strong>
+        </li>
+        <li>
+          <span>Serves</span>
+          <strong>{{ page.servings }}</strong>
+        </li>
+        <li>
+          <span>Difficulty</span>
+          <strong>{{ page.difficulty }}</strong>
+        </li>
+      </ul>
       <div><span>Cook: {{ page.cookTime }}</span> | <span>Prep: {{ page.prepTime }}</span> | <span>Servings: {{ page.servings }}</span></div>
-      <h3 class="recipe-description">{{ page.description }}</h3>
     </div>
   </header>
   <article class="recipe-content wrapper">

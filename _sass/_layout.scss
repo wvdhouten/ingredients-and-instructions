@@ -152,6 +152,18 @@
   margin-bottom: $spacing-unit;
 }
 
+.recipe-properties {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  list-style: none;
+
+  li {
+    align-self: center;
+    width: 50%;
+  }
+}
+
 .recipe-title {
   font-size: 42px;
   letter-spacing: -1px;
@@ -159,7 +171,6 @@
 }
 
 .recipe-content {
-  display: flex;
   margin-bottom: $spacing-unit;
 
   .ingredients {
@@ -246,6 +257,8 @@
       background-color: var(--background-color);
 
       &::after {
+        position: absolute;
+        content: "";
         transform: rotate(45deg);
         left: 8px;
         top: 3px;
