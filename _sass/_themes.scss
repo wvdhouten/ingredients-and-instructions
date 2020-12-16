@@ -9,6 +9,7 @@ $accent: #2a7ae2;
   --accent-color: #{$accent};
   --accent-color-light: #{lighten($accent, 40%)};
   --accent-color-dark: #{darken($accent, 25%)};
+  --grey: #{$grey-color};
 }
 
 $accent: #00ff00;

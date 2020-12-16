@@ -157,6 +157,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   list-style: none;
+  border: 1px solid var(--grey);
 
   li {
     flex: 1;
@@ -169,11 +170,13 @@
     span {
       display: block;
       font-size: 12px;
+      margin: 1rem 0 .25rem;
     }
 
     strong {
       display: block;
       font-size: 16px;
+      margin: .25rem 0 1rem;
     }
   }
 }
