@@ -4,7 +4,7 @@ layout: main
 <div class="recipe">
   <header class="recipe-header">
     <div class="wrapper">
-      <span>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} by <a href="https://github.com/{{ page.author }}"></a>
+      <span>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} by <a href="https://github.com/{{ page.author }}">
         <span class="icon icon--github"><svg><use href="{{ "/assets/icons.svg#github" | prepend: site.baseurl }}"></use></svg></span>
         <span class="username">{{ page.author }}</span>
       </a>{% endif %}</span>
@@ -28,7 +28,6 @@ layout: main
           <strong>{{ page.difficulty }}</strong>
         </li>
       </ul>
-      <div><span>Cook: {{ page.cookTime }}</span> | <span>Prep: {{ page.prepTime }}</span> | <span>Servings: {{ page.servings }}</span></div>
     </div>
   </header>
   <article class="recipe-content wrapper">

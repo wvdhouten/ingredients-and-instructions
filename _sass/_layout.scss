@@ -150,6 +150,10 @@
 /* Recipes */
 .recipe-header {
   margin-bottom: $spacing-unit;
+
+  h1 {
+    margin-bottom: 0;
+  }
 }
 
 .recipe-properties {
@@ -158,6 +162,7 @@
   flex-direction: row;
   list-style: none;
   border: 1px solid var(--grey);
+  margin: 12px 0;
 
   li {
     flex: 1;
