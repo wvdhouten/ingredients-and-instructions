@@ -14,18 +14,18 @@ $spacing-unit:     30px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
-$on-xsmall: 576px; // 540px usable.
-$on-small: 768px; // 720px usable.
-$on-medium: 992px; // 960px usable.
-$on-large: 1200px; // 1140px usable.
+$xsmall: 576px; // 540px usable.
+$small: 768px; // 720px usable.
+$medium: 992px; // 960px usable.
+$large: 1200px; // 1140px usable.
 
-@mixin media-query-max($device) {
+@mixin media-query-below($device) {
     @media screen and (max-width: $device) {
         @content;
     }
 }
 
-@mixin media-query-min($device) {
+@mixin media-query-above($device) {
     @media screen and (min-width: $device) {
         @content;
     }

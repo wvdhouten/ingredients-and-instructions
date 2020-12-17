@@ -39,7 +39,7 @@
     }
   }
 
-  @include media-query-max($on-xsmall) {
+  @include media-query-below($xsmall) {
     position: absolute;
     top: 9px;
     right: 30px;
@@ -165,23 +165,27 @@
   margin: 12px 0;
 
   li {
-    flex: 1;
+    flex-grow: 1;
     align-self: center;
     margin: 0;
     padding: 0;
-    width: 50%;
+    width: 100%;
     text-align: center;
 
     span {
       display: block;
-      font-size: 12px;
-      margin: 1rem 0 .25rem;
+      font-size: 14px;
+      margin: 1rem 0 0.25rem;
     }
 
     strong {
       display: block;
-      font-size: 16px;
-      margin: .25rem 0 1rem;
+      font-size: 26px;
+      margin: 0.25rem 0 1rem;
+    }
+
+    @include media-query-below($small) {
+      width: 50%;
     }
   }
 }
@@ -189,7 +193,6 @@
 .recipe-title {
   font-size: 42px;
   letter-spacing: -1px;
-  line-height: 1;
 }
 
 .recipe-content {
