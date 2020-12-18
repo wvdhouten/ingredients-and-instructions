@@ -202,6 +202,10 @@
     @include media-query-below($small) {
       width: 50%;
 
+      &:nth-child(-n+2) {
+        border-bottom: 1px solid #aaa;
+      }
+
       &::after {
         top: 20%;
         bottom: 20%;
