@@ -183,23 +183,32 @@
       margin: 0.25rem 0 1rem;
     }
 
-    ::after {
+    &::after {
       content: " ";
       display: block;
       position: absolute;
       width: 1px;
       background: #aaa;
-      top: .25rem;
-      bottom: .25rem;
+      top: 0.25rem;
+      bottom: 0.25rem;
       right: 0;
     }
 
-    :last-child::after {
+    &:last-child::after {
       display: none;
     }
 
     @include media-query-below($small) {
       width: 50%;
+
+      &::after {
+        top: 1rem;
+        bottom: 1rem;
+      }
+
+      &:nth-child(2n)::after {
+        display: none;
+      }
     }
   }
 }
