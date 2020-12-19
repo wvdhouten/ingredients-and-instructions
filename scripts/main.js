@@ -16,7 +16,7 @@ anchors.forEach((a) => {
 });
 
 const currentTheme = localStorage.getItem("theme");
-if (currentTheme) window.body.setAttribute("theme", currentTheme);
+if (currentTheme) document.body.setAttribute("theme", currentTheme);
 
 const themeSelectors = document.querySelectorAll("[theme]");
 themeSelectors.forEach((a) => {
