@@ -31,3 +31,5 @@ class ThemeManager {
     localStorage.setItem("theme", theme);
   }
 }
+
+const themeManager = new ThemeManager();
