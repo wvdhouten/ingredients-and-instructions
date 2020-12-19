@@ -147,11 +147,29 @@
 }
 
 /* Recipes */
-.recipe-header {
+.recipe {
+  display: flex;
+}
+
+.recipe-header, .ingredients, .instructions {
   margin-bottom: $spacing-unit;
+  flex-grow: 1;
+  width: 100%;
 
   h1 {
     margin-bottom: 0;
+  }
+}
+
+.ingredients {
+  @include media-query-above($small){
+    width: 30%;
+  }
+}
+
+.instructions {
+  @include media-query-above($small){
+    width: 70%;
   }
 }
 
@@ -229,27 +247,23 @@
   margin-left: 15px;
 }
 
-.recipe-content {
-  margin-bottom: $spacing-unit;
+.ingredients {
+  header {
+    font-size: 32px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+  }
 
-  .ingredients {
-    header {
-      font-size: 32px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
+  > div {
+    display: flex;
+
+    .quantity {
+      width: 100px;
     }
 
-    > div {
-      display: flex;
-
-      .quantity {
-        width: 100px;
-      }
-
-      .ingredient {
-        flex: 1;
-      }
+    .ingredient {
+      flex: 1;
     }
   }
 
@@ -289,8 +303,6 @@
 
 /* Checkbox */
 .checkbox {
-  user-select: none;
-
   > input {
     display: none;
 
@@ -309,8 +321,8 @@
     display: inline-block;
     height: 1em;
     width: 1em;
-    vertical-align: text-top;
-    border: 1px solid var(--accent-color);
+    vertical-align: sub;
+    border: 1px dashed var(--accent-color);
     cursor: pointer;
 
     &::after {
@@ -330,6 +342,6 @@
   }
 
   ~ .label {
-    margin-left: 8px;
+    margin-left: 12px;
   }
 }

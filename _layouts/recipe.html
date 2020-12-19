@@ -1,7 +1,7 @@
 ---
 layout: main
 ---
-<div class="recipe">
+<article class="recipe">
   <header class="recipe-header">
     <div class="wrapper">
       <span>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} by <a href="https://github.com/{{ page.author }}">
@@ -29,25 +29,23 @@ layout: main
       <span class="recipe-decription">{{ page.description }}</span>
     </div>
   </header>
-  <article class="recipe-content wrapper">
-    <section class="ingredients">
-      <header>Ingredients<div class="decorative-line"></header>
-      {% for ingredient in page.ingredients %}
-        <div>
-          <label class="checkbox">
-            <input type="checkbox"/>
-            <span class="visual"></span>
-            <span class="label">
-              <a href="#quantity" class="quantity">{{ ingredient[1] }}</a>
-              <span class="ingredient">{{ ingredient[0] }}</span>
-            </span>
-          </label>
-        </div>
-      {% endfor %}
-    </section>
-    <section class="instructions">
-      <header>Instructions<div class="decorative-line"></header>
-      {{ content }}
-    </section>
-  </article>
+  <section class="ingredients wrapper">
+    <header>Ingredients<div class="decorative-line"></header>
+    {% for ingredient in page.ingredients %}
+      <div>
+        <label class="checkbox">
+          <input type="checkbox"/>
+          <span class="visual"></span>
+          <span class="label">
+            <a href="#quantity" class="quantity">{{ ingredient[1] }}</a>
+            <span class="ingredient">{{ ingredient[0] }}</span>
+          </span>
+        </label>
+      </div>
+    {% endfor %}
+  </section>
+  <section class="instructions wrapper">
+    <header>Instructions<div class="decorative-line"></header>
+    {{ content }}
+  </section>
 </div>
