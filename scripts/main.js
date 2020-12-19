@@ -3,15 +3,10 @@ anchors.forEach((a) => {
   hash = a.href.split("#")[1];
   switch (hash) {
     case "quantity":
-      let convertedValue = unitConverter.convertQuantity(a.innerText);
-      let conversionElement = createConversionElement(a.innerText, convertedValue);
-      a.classList.forEach((c) => conversionElement.classList.add(c));
-      a.parentNode.replaceChild(conversionElement, a);
+      convertQuantity(a);
       break;
     case "temperature":
-      let convertedValue = unitConverter.convertTemperature(a.innerText);
-      let conversionElement = createConversionElement(a.innerText, convertedValue);
-      a.parentNode.replaceChild(conversionElement, a);
+      convertTemperature(a);
       break;
     case "timer":
       const timerElement = createTimerElement(a.innerText);
@@ -34,6 +29,19 @@ themeSelectors.forEach((a) => {
     localStorage.setItem("theme", theme);
   });
 });
+
+function convertQuantity(a) {
+  const convertedValue = unitConverter.convertQuantity(a.innerText);
+  const conversionElement = createConversionElement(a.innerText, convertedValue);
+  a.classList.forEach((c) => conversionElement.classList.add(c));
+  a.parentNode.replaceChild(conversionElement, a);
+}
+
+function convertTemperature(a) {
+  const convertedValue = unitConverter.convertTemperature(a.innerText);
+  const conversionElement = createConversionElement(a.innerText, convertedValue);
+  a.parentNode.replaceChild(conversionElement, a);
+}
 
 function createConversionElement(value, convertedValue) {
   const element = document.createElement("span");
