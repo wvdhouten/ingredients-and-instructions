@@ -20,7 +20,7 @@ class ThemeManager {
     event.preventDefault();
     event.stopPropagation();
 
-    const theme = ev.currentTarget.getAttribute("theme");
+    const theme = event.currentTarget.getAttribute("theme");
     this.setTheme(theme);
   }
 
