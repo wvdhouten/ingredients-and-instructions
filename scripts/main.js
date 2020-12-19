@@ -9,8 +9,8 @@ anchors.forEach((a) => {
       a.parentNode.replaceChild(conversionElement, a);
       break;
     case "temperature":
-      convertedValue = unitConverter.convertTemperature(a.innerText);
-      conversionElement = createConversionElement(a.innerText, convertedValue);
+      let convertedValue = unitConverter.convertTemperature(a.innerText);
+      let conversionElement = createConversionElement(a.innerText, convertedValue);
       a.parentNode.replaceChild(conversionElement, a);
       break;
     case "timer":
