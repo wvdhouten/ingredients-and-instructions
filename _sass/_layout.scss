@@ -298,12 +298,12 @@
 
   .conversion {
     cursor: help;
-    border-bottom: 1px solid orange;
+    border-bottom: 1px dashed orange;
   }
 
   .timer {
     cursor: help;
-    border-bottom: 1px solid royalblue;
+    border-bottom: 1px dashed royalblue;
   }
 }
 
@@ -336,12 +336,12 @@
       position: absolute;
       content: "";
       left: .29em;
-      top: .04em;
+      top: .1em;
       width: .3em;
       height: .6em;
       transform: rotate(45deg);
       border-width: 0 2px 2px 0;
-      border-style: dashed;
+      border-style: solid;
       border-color: transparent;
       opacity: 0;
       transition: 0.1s all ease-in-out;
