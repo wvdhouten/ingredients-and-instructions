@@ -15,21 +15,6 @@ anchors.forEach((a) => {
   }
 });
 
-const currentTheme = localStorage.getItem("theme");
-if (currentTheme) document.body.setAttribute("theme", currentTheme);
-
-const themeSelectors = document.querySelectorAll("[theme]");
-themeSelectors.forEach((a) => {
-  a.addEventListener("click", (ev) => {
-    ev.preventDefault();
-    ev.stopPropagation();
-
-    const theme = ev.currentTarget.getAttribute("theme");
-    document.body.setAttribute("theme", theme);
-    localStorage.setItem("theme", theme);
-  });
-});
-
 function convertQuantity(a) {
   const convertedValue = unitConverter.convertQuantity(a.innerText);
   const conversionElement = createConversionElement(a.innerText, convertedValue);
@@ -58,3 +43,5 @@ function createTimerElement(value) {
   element.addEventListener("click", (x) => timer.start(value));
   return element;
 }
+
+const themeManager = new ThemeManager();
