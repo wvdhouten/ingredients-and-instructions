@@ -33,19 +33,20 @@ class UnitConverter {
                 return this.__conversionResult(amount, unit, amount, unit);
         }
     }
-    
+
     convertTemperature(input) {
+      debugger;
         const matches = input.match(/([0-9]+)|([a-zA-Z]+)/gi);
         const amount = parseFloat(matches[0]);
         const unit = matches[1];
-    
+
         switch (unit) {
             case 'c':
                 return this.__conversionResult(amount, 'c', amount * 1.8 + 32, 'f');
             case 'f':
                 return this.__conversionResult((amount - 32) / 1.8, 'c', amount, 'f');
         }
-    
+
         return input;
     }
 

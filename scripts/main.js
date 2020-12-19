@@ -4,10 +4,7 @@ anchors.forEach((a) => {
   switch (hash) {
     case "quantity":
       let convertedValue = unitConverter.convertQuantity(a.innerText);
-      let conversionElement = createConversionElement(
-        a.innerText,
-        convertedValue
-      );
+      let conversionElement = createConversionElement(a.innerText, convertedValue);
       a.classList.forEach((c) => conversionElement.classList.add(c));
       a.parentNode.replaceChild(conversionElement, a);
       break;
