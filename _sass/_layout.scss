@@ -325,6 +325,7 @@
 
   .visual {
     display: inline-block;
+    position: relative;
     height: 1em;
     width: 1em;
     vertical-align: sub;
@@ -334,10 +335,10 @@
     &::after {
       position: absolute;
       content: "";
-      left: 0.85em;
-      top: 0.62em;
-      width: 0.3em;
-      height: 0.6em;
+      left: .29em;
+      top: .04em;
+      width: .3em;
+      height: .6em;
       transform: rotate(45deg);
       border-width: 0 2px 2px 0;
       border-style: dashed;
