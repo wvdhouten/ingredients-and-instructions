@@ -21,6 +21,7 @@ class UnitConverter {
 
   createConversionElement(a) {
     const hash = a.getAttribute('href');
+    const value = a.innerText;
     const matches = value.match(/([0-9]+)|([a-zA-Z]+)/gi);
     const amount = matches[0];
     const unit = matches[1];
@@ -36,6 +37,7 @@ class UnitConverter {
 
   createTimerElement(a) {
     const element = document.createElement("span");
+    const value = a.innerText;
     element.classList.add("timer");
     element.textContent = a.innerText;
     element.addEventListener("click", () => timer.start(value));
