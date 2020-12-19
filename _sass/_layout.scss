@@ -247,6 +247,16 @@
       width: 70%;
     }
   }
+
+  .conversion {
+    cursor: help;
+    border-bottom: 1px dashed orange;
+  }
+
+  .timer {
+    cursor: help;
+    border-bottom: 1px dashed royalblue;
+  }
 }
 
 .recipe-title {
@@ -271,39 +281,6 @@
     .ingredient {
       flex: 1;
     }
-  }
-
-  .instructions {
-    flex: 1;
-
-    header {
-      font-size: 32px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  h2 {
-    font-size: 32px;
-  }
-
-  h3 {
-    font-size: 26px;
-  }
-
-  h4 {
-    font-size: 20px;
-  }
-
-  .conversion {
-    cursor: help;
-    border-bottom: 1px dashed orange;
-  }
-
-  .timer {
-    cursor: help;
-    border-bottom: 1px dashed royalblue;
   }
 }
 
