@@ -222,10 +222,21 @@
   font-size: 42px;
 }
 
+.decorative-line {
+  flex: auto;
+  height: 1px;
+  border-bottom: 1px solid #aaa;
+  margin-left: 15px;
+}
+
 .recipe-content {
   margin-bottom: $spacing-unit;
 
   .ingredients {
+    header {
+      display: flex;
+    }
+
     > div {
       display: flex;
 
