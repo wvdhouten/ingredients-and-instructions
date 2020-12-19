@@ -4,7 +4,10 @@ anchors.forEach((a) => {
   switch (hash) {
     case "quantity":
       let convertedValue = unitConverter.convertQuantity(a.innerText);
-      let conversionElement = createConversionElement(a.innerText, convertedValue);
+      let conversionElement = createConversionElement(
+        a.innerText,
+        convertedValue
+      );
       a.classList.forEach((c) => conversionElement.classList.add(c));
       a.parentNode.replaceChild(conversionElement, a);
       break;
@@ -20,23 +23,20 @@ anchors.forEach((a) => {
   }
 });
 
-function initThemes() {
-  const currentTheme = localStorage.getItem('theme');
-  if (currentTheme)
-    window.body.setAttribute('theme', currentTheme);
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme) window.body.setAttribute("theme", currentTheme);
 
-  const themeSelectors = document.querySelectorAll("[theme]");
-  themeSelectors.forEach((a) => {
-    a.addEventListener("click", (ev) => {
-      ev.preventDefault();
-      ev.stopPropagation();
+const themeSelectors = document.querySelectorAll("[theme]");
+themeSelectors.forEach((a) => {
+  a.addEventListener("click", (ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
 
-      const theme = ev.currentTarget.getAttribute("theme");
-      document.body.setAttribute("theme", theme);
-      localStorage.setItem("theme", theme);
-    });
+    const theme = ev.currentTarget.getAttribute("theme");
+    document.body.setAttribute("theme", theme);
+    localStorage.setItem("theme", theme);
   });
-}
+});
 
 function createConversionElement(value, convertedValue) {
   const element = document.createElement("span");
@@ -53,5 +53,3 @@ function createTimerElement(value) {
   element.addEventListener("click", (x) => timer.start(value));
   return element;
 }
-
-initThemes();
