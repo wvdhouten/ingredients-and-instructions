@@ -1,7 +1,7 @@
 // TODO: Consider conversion to base unit and let the UI convert to the closest unit.
 class UnitConverter {
   constructor() {
-    initConverions();
+    this.initConverions();
   }
 
   initConverions() {
