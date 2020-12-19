@@ -35,7 +35,6 @@ class UnitConverter {
     }
 
     convertTemperature(input) {
-      debugger;
         const matches = input.match(/([0-9]+)|([a-zA-Z]+)/gi);
         const amount = parseFloat(matches[0]);
         const unit = matches[1];
