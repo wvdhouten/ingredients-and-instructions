@@ -12,7 +12,9 @@ class ThemeManager {
   attachThemeSelectorListeners() {
     const themeSelectors = document.querySelectorAll("a[theme]");
     themeSelectors.forEach((a) => {
-      a.addEventListener("click", this.onThemeSelectorClick);
+      a.addEventListener("click", (event) => {
+        this.onThemeSelectorClick(event);
+      });
     });
   }
 
