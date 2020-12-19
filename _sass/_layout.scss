@@ -147,29 +147,11 @@
 }
 
 /* Recipes */
-.recipe {
-  display: flex;
-}
-
 .recipe-header, .ingredients, .instructions {
   margin-bottom: $spacing-unit;
-  flex-grow: 1;
-  width: 100%;
 
   h1 {
     margin-bottom: 0;
-  }
-}
-
-.ingredients {
-  @include media-query-above($small){
-    width: 30%;
-  }
-}
-
-.instructions {
-  @include media-query-above($small){
-    width: 70%;
   }
 }
 
@@ -232,6 +214,27 @@
       &:nth-child(2n)::after {
         display: none;
       }
+    }
+  }
+}
+
+.recipe-content {
+  display: flex;
+  flex-wrap: wrap;
+
+  > * {
+    width: 100%;
+  }
+
+  .ingredients {
+    @include media-query-above($small){
+      width: 30%;
+    }
+  }
+
+  .instructions {
+    @include media-query-above($small){
+      width: 70%;
     }
   }
 }

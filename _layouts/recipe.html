@@ -29,9 +29,10 @@ layout: main
       <span class="recipe-decription">{{ page.description }}</span>
     </div>
   </header>
-  <section class="ingredients wrapper">
-    <header>Ingredients<div class="decorative-line"></header>
-    {% for ingredient in page.ingredients %}
+  <div class="recipe-content wrapper">
+    <section class="ingredients">
+      <header>Ingredients<div class="decorative-line"></header>
+      {% for ingredient in page.ingredients %}
       <div>
         <label class="checkbox">
           <input type="checkbox"/>
@@ -42,10 +43,11 @@ layout: main
           </span>
         </label>
       </div>
-    {% endfor %}
-  </section>
-  <section class="instructions wrapper">
-    <header>Instructions<div class="decorative-line"></header>
-    {{ content }}
-  </section>
+      {% endfor %}
+    </section>
+    <section class="instructions">
+      <header>Instructions<div class="decorative-line"></header>
+      {{ content }}
+    </section>
+  </div>
 </div>
