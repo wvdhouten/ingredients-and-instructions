@@ -12,6 +12,7 @@ class UnitConverter {
         case "#quantity":
         case "#temperature":
           this.createConversionElement(a, hash)
+          break;
         case "#timer":
           this.createTimerElement(a);
           break;
