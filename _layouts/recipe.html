@@ -8,7 +8,6 @@ layout: main
         <span class="icon icon--github"><svg><use href="{{ "/assets/icons.svg#github" | prepend: site.baseurl }}"></use></svg></span><span class="username">{{ page.author }}</span>
       </a>{% endif %}</span>
       <h1 class="recipe-title">{{ page.title }}</h1>
-      <span>{{ page.description }}</span>
       <ul class="recipe-properties">
         <li>
           <span>Preparation Time</span>
@@ -27,24 +26,27 @@ layout: main
           <strong>{{ page.difficulty }}</strong>
         </li>
       </ul>
+      <span class="recipe-decription">{{ page.description }}</span>
     </div>
   </header>
   <article class="recipe-content wrapper">
     <section class="ingredients">
-      <header>Ingredients<div class="decorative-line">
-      </header>
+      <header>Ingredients<div class="decorative-line"></header>
       {% for ingredient in page.ingredients %}
         <div>
           <label class="checkbox">
             <input type="checkbox"/>
-            <span></span>
+            <span class="visual"></span>
+            <span class="label">
+              <a href="#quantity" class="quantity">{{ ingredient[1] }}</a>
+              <span class="ingredient">{{ ingredient[0] }}</span>
+            </span>
           </label>
-          <a href="#quantity" class="quantity">{{ ingredient[1] }}</a>
-          <span class="ingredient">{{ ingredient[0] }}</span>
         </div>
       {% endfor %}
     </section>
     <section class="instructions">
+      <header>Instructions<div class="decorative-line"></header>
       {{ content }}
     </section>
   </article>

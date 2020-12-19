@@ -202,7 +202,7 @@
     @include media-query-below($small) {
       width: 50%;
 
-      &:nth-child(-n+2) {
+      &:nth-child(-n + 2) {
         border-bottom: 1px solid #aaa;
       }
 
@@ -234,7 +234,10 @@
 
   .ingredients {
     header {
+      font-size: 32px;
+      margin-bottom: 12px;
       display: flex;
+      align-items: center;
     }
 
     > div {
@@ -252,6 +255,13 @@
 
   .instructions {
     flex: 1;
+
+    header {
+      font-size: 32px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
   }
 
   h2 {
@@ -279,58 +289,47 @@
 
 /* Checkbox */
 .checkbox {
-  display: block;
-  position: relative;
-  margin: auto;
-  cursor: pointer;
-  height: 1.5em;
-  width: 1.5em;
-  clear: both;
+  user-select: none;
 
-  span {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 1.5em;
-    width: 1.5em;
-    background-color: transparent;
-    border-radius: 2px;
-    transition: all 0.1s ease-out;
-    border: 2px solid var(--accent-color);
+  > input {
+    display: none;
+
+    &:checked {
+      ~ .visual::after {
+        border-color: var(--accent-color);
+        opacity: 1;
+      }
+      ~ .label {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  .visual {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    vertical-align: text-top;
+    border: 1px solid var(--accent-color);
+    cursor: pointer;
 
     &::after {
       position: absolute;
       content: "";
-      left: 12px;
-      top: 12px;
-      height: 0px;
-      width: 0px;
-      border-radius: 2px;
-      border: solid var(--accent-color);
-      border-width: 0 3px 3px 0;
-      transition: all 0.1s ease-out;
+      left: 0.85em;
+      top: 0.62em;
+      width: 0.3em;
+      height: 0.6em;
+      transform: rotate(45deg);
+      border-width: 0 2px 2px 0;
+      border-style: solid;
+      border-color: transparent;
+      opacity: 0;
+      transition: 0.1s all ease-in-out;
     }
   }
 
-  input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-
-    &:checked ~ span {
-      background-color: var(--background-color);
-
-      &::after {
-        position: absolute;
-        content: "";
-        transform: rotate(45deg);
-        left: 8px;
-        top: 3px;
-        width: 6px;
-        height: 12px;
-        border-width: 0 2px 2px 0;
-        background-color: transparent;
-        border-radius: 0;
-      }
-    }
+  ~ .label {
+    margin-left: 8px;
   }
 }
