@@ -27,22 +27,22 @@ class UnitConverter {
   }
 
   initConverionElements() {
-    document.querySelectorAll("a[href^='#']").forEach((element) => {
-      const type = element.getAttribute("href").substring(1);
+    document.querySelectorAll("a[href^='#']").forEach((a) => {
+      const type = a.getAttribute("href").substring(1);
       switch (type) {
         case "measurement":
         case "temperature":
-          this.createConversionElement(element, type);
+          this.createConversionElement(a, type);
           break;
         case "timer":
-          this.createTimerElement(element);
+          this.createTimerElement(a);
           break;
       }
     });
   }
 
-  createConversionElement(element, type) {
-    const value = element.innerText;
+  createConversionElement(a, type) {
+    const value = a.innerText;
     const matches = value.match(/([0-9]+)|([a-zA-Z]+)/gi);
     const amount = matches[0];
     const unit = matches[1];
@@ -71,11 +71,11 @@ class UnitConverter {
     });
   }
 
-  createTimerElement(element) {
+  createTimerElement(a) {
     const element = document.createElement("span");
-    const value = element.innerText;
+    const value = a.innerText;
     element.classList.add("timer");
-    element.textContent = element.innerText;
+    element.textContent = a.innerText;
     element.addEventListener("click", () => timer.start(value));
     element.parentNode.replaceChild(element, element);
   }
