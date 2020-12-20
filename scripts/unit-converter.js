@@ -40,8 +40,7 @@ class UnitConverter {
     });
   }
 
-  createConversionElement(a) {
-    const hash = a.getAttribute("href");
+  createConversionElement(a, hash) {
     const value = a.innerText;
     const matches = value.match(/([0-9]+)|([a-zA-Z]+)/gi);
     const amount = matches[0];
