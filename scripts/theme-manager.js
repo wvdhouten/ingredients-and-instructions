@@ -1,6 +1,11 @@
 class ThemeManager {
-  get theme() { return localStorage.getItem('theme');}
-  set theme(value) { localStorage.setItem('theme', value); }
+  get theme() {
+    return localStorage.getItem("theme");
+  }
+  set theme(value) {
+    localStorage.setItem("theme", value);
+    this.restoreTheme();
+  }
 
   constructor() {
     this.restoreTheme();
@@ -8,7 +13,7 @@ class ThemeManager {
   }
 
   restoreTheme() {
-    document.getElementById('current-theme').innerText = this.theme ?? 'default';
+    document.getElementById("current-theme").innerText = this.theme ?? "default";
     document.body.setAttribute("theme", this.theme);
   }
 
@@ -27,11 +32,6 @@ class ThemeManager {
 
     const theme = event.currentTarget.getAttribute("theme");
     this.setTheme(theme);
-  }
-
-  setTheme(theme) {
-    this.theme = theme;
-    this.restoreTheme();
   }
 }
 

@@ -1,15 +1,32 @@
 // TODO: Consider conversion to base unit and let the UI convert to the closest unit.
 class UnitConverter {
-  constructor() {
-    this.initConverionElements();
-    this.convertElements();
-  }
-
   get system() {
     return localStorage.getItem("system");
   }
   set system(value) {
     localStorage.setItem("system", value);
+    this.convertElements();
+  }
+
+  constructor() {
+    this.initConverionElements();
+    this.convertElements();
+  }
+
+  attachSystemSelectorListeners() {
+    const themeSelectors = document.querySelectorAll("a[system]");
+    themeSelectors.forEach((a) => {
+      a.addEventListener("click", (event) => {
+        this.onSystemSelectorClick(event);
+      });
+    });
+  }
+
+  onSystemSelectorClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.system = event.currentTarget.getAttribute("system");
   }
 
   initConverionElements() {
@@ -29,6 +46,7 @@ class UnitConverter {
   }
 
   convertElements() {
+    document.getElementById("current-system").innerText = this.system ?? "metric";
     const elements = document.querySelectorAll(".conversion");
     elements.forEach((element) => {
       const type = element.getAttribute("type");

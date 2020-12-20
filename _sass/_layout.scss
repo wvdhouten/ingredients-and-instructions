@@ -119,8 +119,9 @@
   width: calc(50% - (#{$spacing-unit} / 2));
 }
 
-#theme-selector {
+#system-selector, #theme-selector {
   float: right;
+  margin-left: 8px;
 
   > span {
     margin-right: 8px;
