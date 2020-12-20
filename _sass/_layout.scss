@@ -17,7 +17,7 @@
 
   &,
   &:visited {
-    color: $grey-color-dark;
+    color: var(--accent-color);
   }
 }
 
@@ -333,6 +333,12 @@
       flex: 1;
     }
   }
+}
+
+/* Icons */
+
+.icon {
+  fill: currentColor;
 }
 
 /* Checkbox */
