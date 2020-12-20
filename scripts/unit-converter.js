@@ -11,6 +11,7 @@ class UnitConverter {
   constructor() {
     this.initConverionElements();
     this.convertElements();
+    this.attachSystemSelectorListeners();
   }
 
   attachSystemSelectorListeners() {

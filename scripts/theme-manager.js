@@ -30,8 +30,7 @@ class ThemeManager {
     event.preventDefault();
     event.stopPropagation();
 
-    const theme = event.currentTarget.getAttribute("theme");
-    this.setTheme(theme);
+    this.theme = event.currentTarget.getAttribute("theme");
   }
 }
 
