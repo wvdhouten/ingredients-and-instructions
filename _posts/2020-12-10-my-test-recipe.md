@@ -13,7 +13,7 @@ difficulty: 2
 servings: 3
 ingredients: 
   tumeric: 1tb
-  sugar: 300gr
+  sugar: 300g
   water: 3l
   blood orange: 1
 ---
