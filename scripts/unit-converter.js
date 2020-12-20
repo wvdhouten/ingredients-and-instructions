@@ -83,7 +83,7 @@ class UnitConverter {
     element.setAttribute("unit", unit);
     element.setAttribute("type", type);
     element.innerText = element.innerText;
-    element.parentNode.replaceChild(element, element);
+    a.parentNode.replaceChild(element, element);
   }
 
   convertElements() {
@@ -107,7 +107,7 @@ class UnitConverter {
     element.classList.add("timer");
     element.textContent = a.innerText;
     element.addEventListener("click", () => timer.start(value));
-    element.parentNode.replaceChild(element, element);
+    a.parentNode.replaceChild(element, element);
   }
 
   convertMeasurement(element) {
