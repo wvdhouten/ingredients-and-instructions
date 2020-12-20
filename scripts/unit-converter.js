@@ -31,7 +31,7 @@ class UnitConverter {
   convertElements() {
     const elements = document.querySelectorAll(".conversion");
     elements.forEach((element) => {
-      const type = document.getAttribute("type");
+      const type = element.getAttribute("type");
       switch (type) {
         case "temperature":
           this.convertTemperature(element);
