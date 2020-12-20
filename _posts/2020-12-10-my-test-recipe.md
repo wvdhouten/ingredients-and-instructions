@@ -19,7 +19,7 @@ ingredients:
 ---
 
 * Preheat the oven to [180C](#temperature).
-* Melt [100gr](#quantity) of the sugar.
+* Melt [100gr](#measurement) of the sugar.
 * Wait for [1m30s](#timer).
 
 Images could be in here too, surely?

@@ -1,4 +1,3 @@
-// TODO: Consider conversion to base unit and let the UI convert to the closest unit.
 class UnitConverter {
   get system() {
     return localStorage.getItem("system");
@@ -17,50 +16,33 @@ class UnitConverter {
   attachSystemSelectorListeners() {
     const themeSelectors = document.querySelectorAll("a[system]");
     themeSelectors.forEach((a) => {
-      a.addEventListener("click", (event) => {
-        this.onSystemSelectorClick(event);
-      });
+      a.addEventListener("click", (event) => this.onSystemSelectorClick(event));
     });
   }
 
   onSystemSelectorClick(event) {
     event.preventDefault();
     event.stopPropagation();
-
     this.system = event.currentTarget.getAttribute("system");
   }
 
   initConverionElements() {
-    const anchors = document.querySelectorAll("a[href^='#']");
-    anchors.forEach((a) => {
-      const hash = a.getAttribute("href").substring(1);
-      switch (hash) {
-        case "quantity":
+    document.querySelectorAll("a[href^='#']").forEach((element) => {
+      const type = element.getAttribute("href").substring(1);
+      switch (type) {
+        case "measurement":
         case "temperature":
-          this.createConversionElement(a, hash);
+          this.createConversionElement(element, type);
           break;
         case "timer":
-          this.createTimerElement(a);
+          this.createTimerElement(element);
           break;
       }
     });
   }
 
-  convertElements() {
-    document.getElementById("current-system").innerText = this.system ?? "metric";
-    const elements = document.querySelectorAll(".conversion");
-    elements.forEach((element) => {
-      const type = element.getAttribute("type");
-      switch (type) {
-        case "temperature":
-          this.convertTemperature(element);
-          break;
-      }
-    });
-  }
-
-  createConversionElement(a, hash) {
-    const value = a.innerText;
+  createConversionElement(element, type) {
+    const value = element.innerText;
     const matches = value.match(/([0-9]+)|([a-zA-Z]+)/gi);
     const amount = matches[0];
     const unit = matches[1];
@@ -69,33 +51,62 @@ class UnitConverter {
     element.classList.add("conversion");
     element.setAttribute("amount", amount);
     element.setAttribute("unit", unit);
-    element.setAttribute("type", hash);
-    element.innerText = a.innerText;
-    a.parentNode.replaceChild(element, a);
+    element.setAttribute("type", type);
+    element.innerText = element.innerText;
+    element.parentNode.replaceChild(element, element);
   }
 
-  createTimerElement(a) {
+  convertElements() {
+    document.getElementById("current-system").innerText = this.system ?? "metric";
+    const elements = document.querySelectorAll(".conversion");
+    elements.forEach((element) => {
+      switch (element.getAttribute("type")) {
+        case "temperature":
+          this.convertTemperature(element);
+          break;
+        case "measurement":
+          element.innerText = this.convertMeasurement(element);
+          break;
+      }
+    });
+  }
+
+  createTimerElement(element) {
     const element = document.createElement("span");
-    const value = a.innerText;
+    const value = element.innerText;
     element.classList.add("timer");
-    element.textContent = a.innerText;
+    element.textContent = element.innerText;
     element.addEventListener("click", () => timer.start(value));
-    a.parentNode.replaceChild(element, a);
+    element.parentNode.replaceChild(element, element);
   }
 
-  convertQuantity(input) {
-    const matches = input.match(/([0-9]+)|([a-zA-Z]+)/gi);
-    const amount = matches[0];
-    const unit = matches[1];
+  convertMeasurement(element) {
+    const unit = element.getAttribute("unit");
+    let amount = element.getAttribute("amount");
+    let type;
 
     switch (unit) {
+      /* Misc */
+      case "tsp":
+        return amount === 1 ? `${amount} teaspoon` : `${amount} teaspoons`;
+      case "tb":
+        return amount === 1 ? `${amount} tablespoon` : `${amount} tablespoons`;
       /* Mass(m) */
-      case "mg":
       case "g":
+        type = 'mass';
+        break;
       case "kg":
+        type = 'mass';
+        amount *= 1000;
+        break;
       /* Mass(i) */
       case "oz":
+        type = 'mass';
+        amount /= 0.035274;
+        break;
       case "lb":
+        type = 'mass';
+        amount /= 0.035274 * 16;
       /* Length(m) */
       case "mm":
       case "cm":
@@ -113,7 +124,11 @@ class UnitConverter {
       case "pt":
       case "qt":
       case "gal":
-        return this.__conversionResult(amount, unit, amount, unit);
+        break;
+    }
+
+    if (type === 'mass') {
+      return `${amount} gr`;
     }
   }
 
@@ -121,7 +136,7 @@ class UnitConverter {
     const amount = element.getAttribute("amount");
     const unit = element.getAttribute("unit");
 
-    element.innerText = this.system === 'imperial'
+    element.innerText = this.system === "imperial"
       ? this.convertTemperatureToImperial(amount, unit)
       : this.convertTemperatureToMetric(amount, unit);
   }
