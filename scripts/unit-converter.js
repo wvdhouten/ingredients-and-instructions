@@ -1,4 +1,34 @@
 class UnitConverter {
+  static get units() {
+    return {
+      tsp: { key: 'tsp', label: 'teaspoon', factor: 1 },
+      tb: { key: 'tb', label: 'tablespoon', factor: 1 },
+      /* Mass(m) */
+      g: { key: 'g', label: 'gram', factor: 1, max: 1000, next: 'kg' },
+      kg: { key: 'kg', label: 'kilogram', factor: 1000, min: 1, prev: 'g' },
+      /* Mass(i) */
+      oz: { key: 'oz', label: 'ounce', factor: 28.3495, max: 16, next: 'lb' },
+      lb: { key: 'lb', label: 'pound', factor: 453.592, min: 1, prev: 'oz' },
+      /* Length(m) */
+      mm: {},
+      cm: {},
+      m: {},
+      /* Length(i) */
+      in: {},
+      ft: {},
+      yd: {},
+      /* Volume(m) */
+      ml: {},
+      cl: {},
+      l: {},
+      /* Volume(i) */
+      'fl-oz': {},
+      pt: {},
+      qt: {},
+      gal: {},
+    };
+  }
+
   get system() {
     return localStorage.getItem("system");
   }
@@ -93,20 +123,11 @@ class UnitConverter {
         return amount === 1 ? `${amount} tablespoon` : `${amount} tablespoons`;
       /* Mass(m) */
       case "g":
-        type = 'mass';
-        break;
       case "kg":
-        type = 'mass';
-        amount *= 1000;
-        break;
       /* Mass(i) */
       case "oz":
-        type = 'mass';
-        amount /= 0.035274;
-        break;
       case "lb":
-        type = 'mass';
-        amount /= 0.035274 * 16;
+        return convertMass(amount, unit);
       /* Length(m) */
       case "mm":
       case "cm":
@@ -126,19 +147,25 @@ class UnitConverter {
       case "gal":
         break;
     }
+  }
 
-    if (type === 'mass') {
-      return `${amount} gr`;
+  convertMass(amount, unit) {
+    const base = amount * UnitConverter.units[unit].factor;
+    let result = base;
+    let outputUnit = this.system === 'imperial' ? UnitConverter.units['oz'] : UnitConverter.units['g'];
+    while (true) {
+      result = base / outputUnit.factor;
+      if (!outputUnit.max || result < outputUnit.max)
+        break;
     }
+    return `${result} ${outputUnit.key}`;
   }
 
   convertTemperature(element) {
     const amount = element.getAttribute("amount");
     const unit = element.getAttribute("unit");
 
-    element.innerText = this.system === "imperial"
-      ? this.convertTemperatureToImperial(amount, unit)
-      : this.convertTemperatureToMetric(amount, unit);
+    element.innerText = this.system === "imperial" ? this.convertTemperatureToImperial(amount, unit) : this.convertTemperatureToMetric(amount, unit);
   }
 
   convertTemperatureToImperial(amount, unit) {
