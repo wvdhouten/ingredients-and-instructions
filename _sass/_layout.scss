@@ -142,6 +142,7 @@
     display: none;
     position: absolute;
     bottom: 0;
+    font-size: $base-font-size;
     background-color: var(--accent-color);
     min-width: 160px;
     z-index: 1;
