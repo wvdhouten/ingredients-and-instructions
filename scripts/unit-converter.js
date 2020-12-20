@@ -1,37 +1,57 @@
 // TODO: Consider conversion to base unit and let the UI convert to the closest unit.
 class UnitConverter {
   constructor() {
-    this.initConverions();
+    this.initConverionElements();
+    this.convertElements();
   }
 
-  initConverions() {
-    const anchors = document.querySelectorAll("a");
+  get system() {
+    return localStorage.getItem("system");
+  }
+  set system(value) {
+    localStorage.setItem("system", value);
+  }
+
+  initConverionElements() {
+    const anchors = document.querySelectorAll("a[href^='#']");
     anchors.forEach((a) => {
-      const hash = a.getAttribute('href');
+      const hash = a.getAttribute("href").substring(1);
       switch (hash) {
-        case "#quantity":
-        case "#temperature":
-          this.createConversionElement(a, hash)
+        case "quantity":
+        case "temperature":
+          this.createConversionElement(a, hash);
           break;
-        case "#timer":
+        case "timer":
           this.createTimerElement(a);
           break;
       }
     });
   }
 
+  convertElements() {
+    const elements = document.querySelectorAll(".conversion");
+    elements.forEach((element) => {
+      const type = document.getAttribute("type");
+      switch (type) {
+        case "temperature":
+          this.convertTemperature(element);
+          break;
+      }
+    });
+  }
+
   createConversionElement(a) {
-    const hash = a.getAttribute('href');
+    const hash = a.getAttribute("href");
     const value = a.innerText;
     const matches = value.match(/([0-9]+)|([a-zA-Z]+)/gi);
     const amount = matches[0];
     const unit = matches[1];
 
     const element = document.createElement("span");
-    element.classList.add('conversion');
-    element.setAttribute('amount', amount);
-    element.setAttribute('unit', unit);
-    element.setAttribute('type', hash);
+    element.classList.add("conversion");
+    element.setAttribute("amount", amount);
+    element.setAttribute("unit", unit);
+    element.setAttribute("type", hash);
     element.innerText = a.innerText;
     a.parentNode.replaceChild(element, a);
   }
@@ -79,19 +99,31 @@ class UnitConverter {
     }
   }
 
-  convertTemperature(input) {
-    const matches = input.match(/([0-9]+)|([a-zA-Z]+)/gi);
-    const amount = parseFloat(matches[0]);
-    const unit = matches[1];
+  convertTemperature(element) {
+    const amount = element.getAttribute("amount");
+    const unit = element.getAttribute("unit");
 
+    element.innerText = this.system === 'imperial'
+      ? this.convertTemperatureToImperial(amount, unit)
+      : this.convertTemperatureToMetric(amount, unit);
+  }
+
+  convertTemperatureToImperial(amount, unit) {
     switch (unit) {
-      case "c":
-        return this.__conversionResult(amount, "c", amount * 1.8 + 32, "f");
-      case "f":
-        return this.__conversionResult((amount - 32) / 1.8, "c", amount, "f");
+      case "C":
+        return `${amount * 1.8 + 32} °F`;
+      case "F":
+        return `${amount} °F`;
     }
+  }
 
-    return input;
+  convertTemperatureToMetric(amount, unit) {
+    switch (unit) {
+      case "C":
+        return `${amount} °C`;
+      case "F":
+        return `${(amount - 32) / 1.8} °C`;
+    }
   }
 }
 

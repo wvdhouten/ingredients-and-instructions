@@ -1,12 +1,14 @@
 class ThemeManager {
+  get theme() { return localStorage.getItem('theme');}
+  set theme(value) { localStorage.setItem('theme', value); }
+
   constructor() {
     this.restoreTheme();
     this.attachThemeSelectorListeners();
   }
 
   restoreTheme() {
-    const currentTheme = localStorage.getItem("theme");
-    if (currentTheme) document.body.setAttribute("theme", currentTheme);
+    document.body.setAttribute("theme", this.theme);
   }
 
   attachThemeSelectorListeners() {
@@ -27,8 +29,8 @@ class ThemeManager {
   }
 
   setTheme(theme) {
-    document.body.setAttribute("theme", theme);
-    localStorage.setItem("theme", theme);
+    this.theme = theme;
+    this.restoreTheme();
   }
 }
 

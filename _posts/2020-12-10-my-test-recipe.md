@@ -18,7 +18,7 @@ ingredients:
   blood orange: 1
 ---
 
-* Preheat the oven to [180c](#temperature).
+* Preheat the oven to [180C](#temperature).
 * Melt [100gr](#quantity) of the sugar.
 * Wait for [1m30s](#timer).
 
