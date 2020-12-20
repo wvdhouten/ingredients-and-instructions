@@ -10,19 +10,19 @@ class UnitConverter {
       oz: { key: 'oz', label: 'ounce', factor: 28.3495, max: 16, next: 'lb' },
       lb: { key: 'lb', label: 'pound', factor: 453.592, min: 1, prev: 'oz' },
       /* Length(m) */
-      mm: { key: 'mm', label: 'pound', factor: 1 },
-      cm: { key: 'cm', label: 'pound', factor: 1, min: 1, prev: 'mm' },
-      m: { key: 'm', label: 'pound', factor: 1, min: 1, prev: 'cm' },
+      mm: { key: 'mm', label: 'milimeter', factor: 0.001 },
+      cm: { key: 'cm', label: 'centimeter', factor: 0.01, min: 1, prev: 'mm' },
+      m: { key: 'm', label: 'meter', factor: 1, min: 1, prev: 'cm' },
       /* Length(i) */
-      in: {},
-      ft: {},
-      yd: {},
+      in: { key: 'in', label: 'inch', factor: 39.3701, max: 12, next: 'ft' },
+      ft: { key: 'ft', label: 'feet', factor: 3.28084, max: 3, next: 'yd' },
+      yd: { key: 'yd', label: 'yard', factor: 1.09361 },
       /* Volume(m) */
       ml: { key: 'ml', label: 'mililiter', factor: 0.001 },
       cl: { key: 'cl', label: 'centiliter', factor: 0.01, min: 1, prev: 'ml' },
       l: { key: 'l', label: 'liter', factor: 1, min: 1, prev: 'cl' },
       /* Volume(i) */
-      'fl-oz': { key: 'fl-oz', label: 'ounce', factor: 33.814, max: 19.2152, next: 'pt' },
+      'fl-oz': { key: 'fl-oz', label: 'fluid ounce', factor: 33.814, max: 19.2152, next: 'pt' },
       pt: { key: 'pt', label: 'pint', factor: 1.75975, max: 6.66139, next: 'gal' },
       gal: { key: 'gal', label: 'gallon', factor: 0.264172 },
     };
@@ -153,7 +153,7 @@ class UnitConverter {
     let outputUnit = this.system === 'imperial' ? UnitConverter.units['oz'] : UnitConverter.units['g'];
     while (true) {
       result = base / outputUnit.factor;
-      if (outputUnit.min && result >= outputUnit.min) {
+      if (outputUnit.min && result < outputUnit.min) {
         outputUnit = UnitConverter.units[outputUnit.prev];
         continue;
       }
@@ -169,10 +169,10 @@ class UnitConverter {
   convertLength(amount, unit) {
     const base = amount * UnitConverter.units[unit].factor;
     let result = base;
-    let outputUnit = this.system === 'imperial' ? UnitConverter.units['oz'] : UnitConverter.units['g'];
+    let outputUnit = this.system === 'imperial' ? UnitConverter.units['in'] : UnitConverter.units['m'];
     while (true) {
       result = base / outputUnit.factor;
-      if (outputUnit.min && result >= outputUnit.min) {
+      if (outputUnit.min && result < outputUnit.min) {
         outputUnit = UnitConverter.units[outputUnit.prev];
         continue;
       }
@@ -191,7 +191,7 @@ class UnitConverter {
     let outputUnit = this.system === 'imperial' ? UnitConverter.units['gal'] : UnitConverter.units['l'];
     while (true) {
       result = base / outputUnit.factor;
-      if (outputUnit.min && result >= outputUnit.min) {
+      if (outputUnit.min && result < outputUnit.min) {
         outputUnit = UnitConverter.units[outputUnit.prev];
         continue;
       }
