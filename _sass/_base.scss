@@ -147,11 +147,13 @@ pre {
 
 /* Wrapper */
 .wrapper {
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: 12px;
+  margin-left: 12px;
   @extend %clearfix;
 
   @include media-query-above($xsmall) {
+    margin-right: auto;
+    margin-left: auto;
     max-width: 540px;
   }
 
