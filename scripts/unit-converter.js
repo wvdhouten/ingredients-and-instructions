@@ -10,22 +10,21 @@ class UnitConverter {
       oz: { key: 'oz', label: 'ounce', factor: 28.3495, max: 16, next: 'lb' },
       lb: { key: 'lb', label: 'pound', factor: 453.592, min: 1, prev: 'oz' },
       /* Length(m) */
-      mm: {},
-      cm: {},
-      m: {},
+      mm: { key: 'mm', label: 'pound', factor: 1 },
+      cm: { key: 'cm', label: 'pound', factor: 1, min: 1, prev: 'mm' },
+      m: { key: 'm', label: 'pound', factor: 1, min: 1, prev: 'cm' },
       /* Length(i) */
       in: {},
       ft: {},
       yd: {},
       /* Volume(m) */
-      ml: {},
-      cl: {},
-      l: {},
+      ml: { key: 'ml', label: 'mililiter', factor: 0.001 },
+      cl: { key: 'cl', label: 'centiliter', factor: 0.01, min: 1, prev: 'ml' },
+      l: { key: 'l', label: 'liter', factor: 1, min: 1, prev: 'cl' },
       /* Volume(i) */
-      'fl-oz': {},
-      pt: {},
-      qt: {},
-      gal: {},
+      'fl-oz': { key: 'fl-oz', label: 'ounce', factor: 33.814, max: 19.2152, next: 'pt' },
+      pt: { key: 'pt', label: 'pint', factor: 1.75975, max: 6.66139, next: 'gal' },
+      gal: { key: 'gal', label: 'gallon', factor: 0.264172 },
     };
   }
 
@@ -113,7 +112,6 @@ class UnitConverter {
   convertMeasurement(element) {
     const unit = element.getAttribute("unit");
     let amount = element.getAttribute("amount");
-    let type;
 
     switch (unit) {
       /* Misc */
@@ -136,6 +134,7 @@ class UnitConverter {
       case "in":
       case "ft":
       case "yd":
+        return this.convertLength(amount, unit);
       /* Volume(m) */
       case "ml":
       case "cl":
@@ -143,9 +142,8 @@ class UnitConverter {
       /* Volume(i) */
       case "fl-oz":
       case "pt":
-      case "qt":
       case "gal":
-        break;
+        return this.convertVolume(amount, unit);
     }
   }
 
@@ -155,10 +153,55 @@ class UnitConverter {
     let outputUnit = this.system === 'imperial' ? UnitConverter.units['oz'] : UnitConverter.units['g'];
     while (true) {
       result = base / outputUnit.factor;
-      if (!outputUnit.max || result < outputUnit.max)
-        break;
+      if (outputUnit.min && result >= outputUnit.min) {
+        outputUnit = UnitConverter.units[outputUnit.prev];
+        continue;
+      }
+      if (outputUnit.max && result >= outputUnit.max) {
+        outputUnit = UnitConverter.units[outputUnit.next];
+        continue;
+      }
+      break;
     }
-    return `${result} ${outputUnit.key}`;
+    return `${Math.round(result * 100) / 100} ${outputUnit.key}`;
+  }
+
+  convertLength(amount, unit) {
+    const base = amount * UnitConverter.units[unit].factor;
+    let result = base;
+    let outputUnit = this.system === 'imperial' ? UnitConverter.units['oz'] : UnitConverter.units['g'];
+    while (true) {
+      result = base / outputUnit.factor;
+      if (outputUnit.min && result >= outputUnit.min) {
+        outputUnit = UnitConverter.units[outputUnit.prev];
+        continue;
+      }
+      if (outputUnit.max && result >= outputUnit.max) {
+        outputUnit = UnitConverter.units[outputUnit.next];
+        continue;
+      }
+      break;
+    }
+    return `${Math.round(result * 100) / 100} ${outputUnit.key}`;
+  }
+
+  convertVolume(amount, unit) {
+    const base = amount * UnitConverter.units[unit].factor;
+    let result = base;
+    let outputUnit = this.system === 'imperial' ? UnitConverter.units['gal'] : UnitConverter.units['l'];
+    while (true) {
+      result = base / outputUnit.factor;
+      if (outputUnit.min && result >= outputUnit.min) {
+        outputUnit = UnitConverter.units[outputUnit.prev];
+        continue;
+      }
+      if (outputUnit.max && result >= outputUnit.max) {
+        outputUnit = UnitConverter.units[outputUnit.next];
+        continue;
+      }
+      break;
+    }
+    return `${Math.round(result * 100) / 100} ${outputUnit.key}`;
   }
 
   convertTemperature(element) {
