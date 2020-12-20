@@ -8,6 +8,7 @@ class ThemeManager {
   }
 
   restoreTheme() {
+    document.getElementById('current-theme').innerText = this.theme ?? 'default';
     document.body.setAttribute("theme", this.theme);
   }
 
