@@ -127,7 +127,7 @@ class UnitConverter {
       /* Mass(i) */
       case "oz":
       case "lb":
-        return convertMass(amount, unit);
+        return this.convertMass(amount, unit);
       /* Length(m) */
       case "mm":
       case "cm":
