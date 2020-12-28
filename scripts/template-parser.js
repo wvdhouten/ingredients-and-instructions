@@ -1,9 +1,5 @@
 class TemplateParser {
-  constructor() {
-    this.parse();
-  }
-
-  parse() {
+  static parse() {
     document.querySelectorAll('[seed]').forEach(element => {
       element.setAttribute('seed', Helpers.hash(element.getAttribute('seed')));
     });
@@ -13,10 +9,10 @@ class TemplateParser {
       switch (type) {
         case 'measurement':
         case 'temperature':
-          this.parseConversionElement(element, type);
+          this.__parseConversionElement(element, type);
           break;
         case 'timer':
-          this.parseTimerElement(element);
+          this.__parseTimerElement(element);
           break;
       }
     });
@@ -26,7 +22,7 @@ class TemplateParser {
     });
   }
 
-  parseConversionElement(element, type) {
+  static __parseConversionElement(element, type) {
     const value = element.innerText;
     const matches = value.match(/([0-9]+)|([a-zA-Z]+)/gi);
     const amount = matches[0];
@@ -41,14 +37,12 @@ class TemplateParser {
     element.parentNode.replaceChild(newElement, element);
   }
 
-  parseTimerElement(element) {
+  static __parseTimerElement(element) {
     const newElement = document.createElement('span');
     const value = element.innerText;
     newElement.classList.add('timer');
     newElement.textContent = element.innerText;
-    newElement.addEventListener('click', () => timer.start(value));
+    newElement.addEventListener('click', () => TimerManager.start(value));
     element.parentNode.replaceChild(newElement, element);
   }
 }
-
-const templateParser = new TemplateParser();

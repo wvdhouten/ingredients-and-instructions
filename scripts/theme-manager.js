@@ -1,37 +1,35 @@
 class ThemeManager {
-  get theme() {
+  static get theme() {
     return localStorage.getItem('theme');
   }
-  set theme(value) {
+  static set theme(value) {
     localStorage.setItem('theme', value);
-    this.restoreTheme();
+    this.applyTheme();
   }
 
-  constructor() {
-    this.restoreTheme();
-    this.attachThemeSelectorListeners();
+  static init() {
+    this.__attachListeners();
+    this.applyTheme();
   }
 
-  restoreTheme() {
-    document.getElementById('current-theme').innerText = this.theme ?? 'default';
+  static applyTheme(theme) {
+    document.getElementById('current-theme').innerText = theme ?? this.theme ?? 'default';
     document.body.setAttribute('theme', this.theme);
   }
 
-  attachThemeSelectorListeners() {
+  static __attachListeners() {
     const themeSelectors = document.querySelectorAll('a[theme]');
     themeSelectors.forEach((a) => {
       a.addEventListener('click', (event) => {
-        this.onThemeSelectorClick(event);
+        this.__onThemeSelectorClick(event);
       });
     });
   }
 
-  onThemeSelectorClick(event) {
+  static __onThemeSelectorClick(event) {
     event.preventDefault();
     event.stopPropagation();
 
     this.theme = event.currentTarget.getAttribute('theme');
   }
 }
-
-const themeManager = new ThemeManager();

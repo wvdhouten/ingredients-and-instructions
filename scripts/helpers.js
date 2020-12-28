@@ -13,7 +13,7 @@ class Helpers {
     if (input.length == 0) return hash;
     for (let i = 0; i < input.length; i++) {
       hash = (hash << 5) - hash + input.charCodeAt(i);
-      hash = hash & hash;
+      hash &= hash;
     }
     return hash;
   }

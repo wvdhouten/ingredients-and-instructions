@@ -1,29 +1,9 @@
 class TimerManager {
-  __container;
+  static get __container() {
+    return document.getElementById('timers');
+  };
 
-  constructor() {
-    this.createTimerContainer();
-    this.restoreTimers();
-  }
-
-  createTimerContainer() {
-    this.__container = document.createElement('div');
-    this.__container.id = 'timers';
-    document.body.appendChild(this.__container);
-  }
-
-  restoreTimers(){
-    const keys = Object.keys(localStorage);
-    keys.forEach(key => {
-      if (!key.startsWith('timer')){
-        return;
-      }
-
-      const timerDetails = JSON.parse(localStorage.getItem(key));
-    });
-  }
-
-  start(duration) {
+  static start(duration) {
     const timerElement = document.createElement('div');
     timerElement.id = 'timer';
     this.__container.appendChild(timerElement);
@@ -41,7 +21,22 @@ class TimerManager {
     }, 100);
   }
 
-  __parseDuration(duration) {
+  static parseTime(duration) {
+    return new Date(timerManager.__parseDuration(duration) * 1000).toISOString().substr(11, 8);
+  }
+
+  static restoreTimers(){
+    const keys = Object.keys(localStorage);
+    keys.forEach(key => {
+      if (!key.startsWith('timer')){
+        return;
+      }
+
+      const timerDetails = JSON.parse(localStorage.getItem(key));
+    });
+  }
+
+  static __parseDuration(duration) {
     if (typeof duration === 'number') return duration;
 
     const match = duration.match(/((\d+)h)?((\d+)m)?((\d+)s?)?/);
@@ -51,10 +46,4 @@ class TimerManager {
     if (match[5]) duration += parseInt(match[6]);
     return duration;
   }
-
-  static parseTime(duration) {
-    return new Date(timerManager.__parseDuration(duration) * 1000).toISOString().substr(11, 8);
-  }
 }
-
-const timerManager = new TimerManager();

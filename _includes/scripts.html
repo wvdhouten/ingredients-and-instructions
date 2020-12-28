@@ -3,3 +3,11 @@
 <script src="{{ "/scripts/theme-manager.js" | prepend: site.baseurl }}" type="text/javascript"></script>
 <script src="{{ "/scripts/unit-converter.js" | prepend: site.baseurl }}" type="text/javascript"></script>
 <script src="{{ "/scripts/timer-manager.js" | prepend: site.baseurl }}" type="text/javascript"></script>
+<script type="text/javascript">
+(function() {
+  ThemeManager.init();
+  TemplateParser.parse();
+  TimerManager.init();
+  UnitConverter.init();
+})();
+</script>

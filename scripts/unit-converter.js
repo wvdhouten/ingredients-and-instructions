@@ -28,34 +28,21 @@ class UnitConverter {
     };
   }
 
-  get system() {
+  static get system() {
     return localStorage.getItem('system');
   }
-  set system(value) {
+  static set system(value) {
     localStorage.setItem('system', value);
     this.convertElements();
   }
 
-  constructor() {
-    this.convertElements();
-    this.attachSystemSelectorListeners();
+  static init(){
+    this.__attachListeners();
+    this.applyConversions();
   }
 
-  attachSystemSelectorListeners() {
-    const themeSelectors = document.querySelectorAll('a[system]');
-    themeSelectors.forEach((a) => {
-      a.addEventListener('click', (event) => this.onSystemSelectorClick(event));
-    });
-  }
-
-  onSystemSelectorClick(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.system = event.currentTarget.getAttribute('system');
-  }
-
-  convertElements() {
-    document.getElementById('current-system').innerText = this.system ?? 'metric';
+  static applyConversions(system) {
+    document.getElementById('current-system').innerText =  system ?? this.system ?? 'metric';
     const elements = document.querySelectorAll('.conversion');
     elements.forEach((element) => {
       switch (element.getAttribute('type')) {
@@ -69,7 +56,7 @@ class UnitConverter {
     });
   }
 
-  convertMeasurement(element) {
+  static convertMeasurement(element) {
     const unit = element.getAttribute('unit');
     let amount = parseFloat(element.getAttribute('amount'));
 
@@ -109,7 +96,7 @@ class UnitConverter {
     }
   }
 
-  convertMass(amount, unit) {
+  static convertMass(amount, unit) {
     const base = amount * UnitConverter.units[unit].factor;
     let result = base;
     let outputUnit = this.system === 'imperial' ? UnitConverter.units['oz'] : UnitConverter.units['g'];
@@ -128,7 +115,7 @@ class UnitConverter {
     return `${Math.round(result * 100) / 100} ${outputUnit.key}`;
   }
 
-  convertLength(amount, unit) {
+  static convertLength(amount, unit) {
     const base = amount * UnitConverter.units[unit].factor;
     let result = base;
     let outputUnit = this.system === 'imperial' ? UnitConverter.units['in'] : UnitConverter.units['m'];
@@ -147,7 +134,7 @@ class UnitConverter {
     return `${Math.round(result * 100) / 100} ${outputUnit.key}`;
   }
 
-  convertVolume(amount, unit) {
+  static convertVolume(amount, unit) {
     const base = amount * UnitConverter.units[unit].factor;
     let result = base;
     let outputUnit = this.system === 'imperial' ? UnitConverter.units['gal'] : UnitConverter.units['l'];
@@ -166,14 +153,14 @@ class UnitConverter {
     return `${Math.round(result * 100) / 100} ${outputUnit.key}`;
   }
 
-  convertTemperature(element) {
+  static convertTemperature(element) {
     const amount = element.getAttribute('amount');
     const unit = element.getAttribute('unit');
 
     element.innerText = this.system === 'imperial' ? this.convertTemperatureToImperial(amount, unit) : this.convertTemperatureToMetric(amount, unit);
   }
 
-  convertTemperatureToImperial(amount, unit) {
+  static convertTemperatureToImperial(amount, unit) {
     switch (unit) {
       case 'C':
         return `${amount * 1.8 + 32} °F`;
@@ -182,7 +169,7 @@ class UnitConverter {
     }
   }
 
-  convertTemperatureToMetric(amount, unit) {
+  static convertTemperatureToMetric(amount, unit) {
     switch (unit) {
       case 'C':
         return `${amount} °C`;
@@ -190,6 +177,17 @@ class UnitConverter {
         return `${(amount - 32) / 1.8} °C`;
     }
   }
-}
 
-const unitConverter = new UnitConverter();
+  static __attachListeners() {
+    const themeSelectors = document.querySelectorAll('a[system]');
+    themeSelectors.forEach((a) => {
+      a.addEventListener('click', (event) => this.__onSystemSelectorClick(event));
+    });
+  }
+
+  static __onSystemSelectorClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.system = event.currentTarget.getAttribute('system');
+  }
+}
