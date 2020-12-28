@@ -22,7 +22,7 @@ class TimerManager {
   }
 
   static parseTime(duration) {
-    return new Date(timerManager.__parseDuration(duration) * 1000).toISOString().substr(11, 8);
+    return new Date(this.__parseDuration(duration) * 1000).toISOString().substr(11, 8);
   }
 
   static restoreTimers(){
