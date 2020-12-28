@@ -18,7 +18,7 @@ class Timer {
     
         duration = this.__parseDuration(duration);
         const start = Date.now();
-        timer = setInterval(() => {
+        __timer = setInterval(() => {
             const delta = Date.now() - start;
             const secondsRemaining = duration - delta / 1000;
             const timeRemaining = new Date(secondsRemaining * 1000).toISOString().substr(11, 8)

@@ -1,8 +1,4 @@
+<script src="{{ "/scripts/template-parser.js" | prepend: site.baseurl }}" type="text/javascript"></script>
 <script src="{{ "/scripts/theme-manager.js" | prepend: site.baseurl }}" type="text/javascript"></script>
 <script src="{{ "/scripts/unit-converter.js" | prepend: site.baseurl }}" type="text/javascript"></script>
 <script src="{{ "/scripts/timer.js" | prepend: site.baseurl }}" type="text/javascript"></script>
-<script>
-    if (navigator.serviceWorker) {
-        navigator.serviceWorker.register('{{ site.baseurl }}/sw.js', { scope: '{{ site.baseurl }}/' })
-    }
-</script>

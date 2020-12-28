@@ -37,7 +37,6 @@ class UnitConverter {
   }
 
   constructor() {
-    this.initConverionElements();
     this.convertElements();
     this.attachSystemSelectorListeners();
   }
@@ -55,36 +54,6 @@ class UnitConverter {
     this.system = event.currentTarget.getAttribute("system");
   }
 
-  initConverionElements() {
-    document.querySelectorAll("a[href^='#']").forEach((a) => {
-      const type = a.getAttribute("href").substring(1);
-      switch (type) {
-        case "measurement":
-        case "temperature":
-          this.createConversionElement(a, type);
-          break;
-        case "timer":
-          this.createTimerElement(a);
-          break;
-      }
-    });
-  }
-
-  createConversionElement(a, type) {
-    const value = a.innerText;
-    const matches = value.match(/([0-9]+)|([a-zA-Z]+)/gi);
-    const amount = matches[0];
-    const unit = matches[1];
-
-    const element = document.createElement("span");
-    element.classList.add("conversion");
-    element.setAttribute("amount", amount);
-    element.setAttribute("unit", unit);
-    element.setAttribute("type", type);
-    element.innerText = element.innerText;
-    a.parentNode.replaceChild(element, a);
-  }
-
   convertElements() {
     document.getElementById("current-system").innerText = this.system ?? "metric";
     const elements = document.querySelectorAll(".conversion");
@@ -100,18 +69,9 @@ class UnitConverter {
     });
   }
 
-  createTimerElement(a) {
-    const element = document.createElement("span");
-    const value = a.innerText;
-    element.classList.add("timer");
-    element.textContent = a.innerText;
-    element.addEventListener("click", () => timer.start(value));
-    a.parentNode.replaceChild(element, a);
-  }
-
   convertMeasurement(element) {
     const unit = element.getAttribute("unit");
-    let amount = element.getAttribute("amount");
+    let amount = parseFloat(element.getAttribute("amount"));
 
     switch (unit) {
       /* Misc */
