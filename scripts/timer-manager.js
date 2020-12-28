@@ -53,4 +53,4 @@ class TimerManager {
   }
 }
 
-const timer = new Timer();
+const timerManager = new TimerManager();
