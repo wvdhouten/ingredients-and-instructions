@@ -20,6 +20,10 @@ class TemplateParser {
           break;
       }
     });
+
+    document.querySelectorAll('[duration]').forEach(element => {
+      element.innerText = TimerManager.parseTime(element.innerText);
+    });
   }
 
   parseConversionElement(element, type) {

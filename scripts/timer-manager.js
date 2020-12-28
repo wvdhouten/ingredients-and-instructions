@@ -51,6 +51,10 @@ class TimerManager {
     if (match[5]) duration += parseInt(match[6]);
     return duration;
   }
+
+  static parseTime(duration) {
+    return new Date(timerManager.__parseDuration(duration) * 1000).toISOString().substr(11, 8);
+  }
 }
 
 const timerManager = new TimerManager();
