@@ -1,45 +1,49 @@
 class TemplateParser {
-constructor(){
-  this.parse();
-}
+  constructor() {
+    this.parse();
+  }
 
   parse() {
-    document.querySelectorAll("a[href^='#']").forEach((a) => {
-      const type = a.getAttribute("href").substring(1);
+    document.querySelectorAll('[seed]').forEach(element => {
+      element.setAttribute('seed', Helpers.hash(element.getAttribute('seed')));
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(element => {
+      const type = element.getAttribute('href').substring(1);
       switch (type) {
-        case "measurement":
-        case "temperature":
-          this.parseConversionElement(a, type);
+        case 'measurement':
+        case 'temperature':
+          this.parseConversionElement(element, type);
           break;
-        case "timer":
-          this.parseTimerElement(a);
+        case 'timer':
+          this.parseTimerElement(element);
           break;
       }
     });
   }
 
-  parseConversionElement(a, type) {
-    const value = a.innerText;
+  parseConversionElement(element, type) {
+    const value = element.innerText;
     const matches = value.match(/([0-9]+)|([a-zA-Z]+)/gi);
     const amount = matches[0];
     const unit = matches[1];
 
-    const element = document.createElement("span");
-    element.classList.add("conversion");
-    element.setAttribute("amount", amount);
-    element.setAttribute("unit", unit);
-    element.setAttribute("type", type);
-    element.innerText = element.innerText;
-    a.parentNode.replaceChild(element, a);
+    const newElement = document.createElement('span');
+    newElement.classList.add('conversion');
+    newElement.setAttribute('amount', amount);
+    newElement.setAttribute('unit', unit);
+    newElement.setAttribute('type', type);
+    newElement.innerText = newElement.innerText;
+    element.parentNode.replaceChild(newElement, element);
   }
 
-  parseTimerElement(a) {
-    const element = document.createElement("span");
-    const value = a.innerText;
-    element.classList.add("timer");
-    element.textContent = a.innerText;
-    element.addEventListener("click", () => timer.start(value));
-    a.parentNode.replaceChild(element, a);
+  parseTimerElement(element) {
+    const newElement = document.createElement('span');
+    const value = element.innerText;
+    newElement.classList.add('timer');
+    newElement.textContent = element.innerText;
+    newElement.addEventListener('click', () => timer.start(value));
+    element.parentNode.replaceChild(newElement, element);
   }
 }
 

@@ -1,7 +1,7 @@
 ---
 layout: main
 ---
-<article class="recipe">
+<article class="recipe" seed="{{ page.url }}">
   <header class="recipe-header">
     <div class="wrapper">
       <span>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} by <a href="https://github.com/{{ page.author }}">
