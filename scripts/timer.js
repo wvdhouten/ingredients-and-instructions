@@ -38,7 +38,7 @@ class Timer {
         if (typeof(duration) === 'number')
             return duration;
 
-        const match = duration.match(/((\d+)h)?((\d+)m)?((\d+)s?)?/gi);
+        const match = duration.match(/((\d+)h)?((\d+)m)?((\d+)s?)?/);
         duration = 0;
         if (match[1])
             duration += parseInt(match[2]) * 3600;
