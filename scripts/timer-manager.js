@@ -1,7 +1,7 @@
 class TimerManager {
   static get __container() {
     return document.getElementById('timers');
-  };
+  }
 
   static start(duration) {
     const timerElement = document.createElement('div');
@@ -20,18 +20,24 @@ class TimerManager {
     }, 100);
   }
 
-  static stop(id) {
+  static pause(id) {}
 
+  static setStatus(timer, status) {
+    const svg = timer.querySelector('.status use');
+    const currentUrl = svg.getAttribute('href');
+    svg.setAttribute('href', currentUrl.replace(/(.+)#(.+)/, `$1#${status}`));
   }
+
+  static cancel(id) {}
 
   static parseTime(duration) {
     return new Date(this.__parseDuration(duration) * 1000).toISOString().substr(11, 8);
   }
 
-  static restoreTimers(){
+  static restoreTimers() {
     const keys = Object.keys(localStorage);
-    keys.forEach(key => {
-      if (!key.startsWith('timer')){
+    keys.forEach((key) => {
+      if (!key.startsWith('timer')) {
         return;
       }
 

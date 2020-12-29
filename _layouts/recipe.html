@@ -5,7 +5,7 @@ layout: main
   <header class="recipe-header">
     <div class="wrapper">
       <span>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} by <a href="https://github.com/{{ page.author }}">
-        <span class="icon icon--github"><svg><use href="{{ "/assets/icons.svg#github" | prepend: site.baseurl }}"></use></svg></span><span class="username">{{ page.author }}</span>
+        <span class="icon"><svg><use href="{{ "/assets/icons.svg#github" | prepend: site.baseurl }}"></use></svg></span><span class="username">{{ page.author }}</span>
       </a>{% endif %}</span>
       <h1 class="recipe-title">{{ page.title }}</h1>
       <ul class="recipe-properties">
