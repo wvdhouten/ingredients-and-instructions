@@ -3,8 +3,15 @@ class TimerManager {
     return document.getElementById('timers');
   }
 
+  static template;
+
+  static init() {
+    this.template = document.getElementById('timer');
+    this.template.remove();
+  }
+
   static start(duration) {
-    const timerElement = document.createElement('div');
+    const timerElement = this.template.cloneNode(true);
     this.__container.appendChild(timerElement);
 
     duration = this.__parseDuration(duration);
