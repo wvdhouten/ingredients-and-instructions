@@ -394,9 +394,13 @@
 
 /* Timers */
 
-#timers {
+#timer-container {
   position: fixed;
   bottom: 0;
+  width: 100%;
+}
+
+#timers {
   display: flex;
   flex-wrap: wrap;
 
