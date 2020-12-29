@@ -119,7 +119,8 @@
   width: calc(50% - (#{$spacing-unit} / 2));
 }
 
-#system-selector, #theme-selector {
+#system-selector,
+#theme-selector {
   float: right;
   margin-left: 8px;
 
@@ -150,7 +151,7 @@
 
     a {
       color: var(--accent-contrast-color);
-      padding: 4px 8px;;
+      padding: 4px 8px;
       text-decoration: none;
       display: block;
 
@@ -247,7 +248,7 @@
     }
 
     &::after {
-      content: " ";
+      content: ' ';
       display: block;
       position: absolute;
       width: 1px;
@@ -372,7 +373,7 @@
 
     &::after {
       position: absolute;
-      content: "";
+      content: '';
       left: 0.29em;
       top: 0.1em;
       width: 0.3em;
@@ -394,53 +395,54 @@
 /* Timers */
 
 #timers {
+  position: fixed;
+  bottom: 0;
   display: flex;
   flex-wrap: wrap;
-}
 
-.timer {
-  width: 15%;
-  border: 1px solid var(--accent-color);
-  border-right: 2px;
+  .timer {
+    width: 15%;
+    border: 1px solid var(--accent-color);
 
-  .controls {
-    display: flex;
+    .controls {
+      display: flex;
 
-    .status {
-      align-self: flex-start;
+      .status {
+        align-self: flex-start;
+      }
+
+      .time {
+        flex: 1;
+        align-self: center;
+      }
+
+      .cancel {
+        align-self: flex-end;
+      }
     }
 
-    .time {
-      flex: 1;
-      align-self: center;
+    .icon {
+      color: var(--accent-color);
+      padding: 4px;
+      cursor: pointer;
     }
 
-    .cancel {
-      align-self: flex-end;
+    .progress {
+      height: 4px;
+      width: 0;
+      background-color: var(--accent-color);
     }
-  }
 
-  .icon {
-    color: var(--accent-color);
-    padding: 4px;
-    cursor: pointer;
-  }
+    @include media-query-below($medium) {
+      width: 33.3%;
+    }
 
-  .progress {
-    height: 4px;
-    width: 0;
-    background-color: var(--accent-color);
-  }
+    @include media-query-below($small) {
+      width: 50%;
+    }
 
-  @include media-query-below($medium) {
-    width: 33.3%;
-  }
-
-  @include media-query-below($small) {
-    width: 50%;
-  }
-
-  @include media-query-below($xsmall) {
-    width: 100%;
+    @include media-query-below($xsmall) {
+      width: 100%;
+    }
   }
 }
