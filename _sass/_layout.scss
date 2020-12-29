@@ -399,10 +399,25 @@
 }
 
 .timer {
-  width: 25%;
+  .controls {
+    display: flex;
+
+    .status {
+      align-self: flex-start;
+    }
+
+    .time {
+      align-self: center;
+    }
+
+    .cancel {
+      align-self: flex-end;
+    }
+  }
 
   .icon {
     color: var(--accent-color);
+    padding: 4px;
     cursor: pointer;
   }
 
