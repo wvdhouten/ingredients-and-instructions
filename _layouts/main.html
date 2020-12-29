@@ -3,22 +3,22 @@
   {% include head.html %}
   <body>
     {% include header.html %}
-    <div class="page-content">
-      {{ content }}
-    </div>
-    {% include footer.html %}
     <div id="timers" class="wrapper">
       <!--template-->
         <div class="timer">
+          <span class="icon status"><svg><use href="{{ "/assets/icons.svg#start" | prepend: site.baseurl }}"></use></svg></span>
           <span class="time">01:01:01</span>
-          <span class="status"><svg><use href="{{ "/assets/icons.svg#start" | prepend: site.baseurl }}"></use></svg></span>
-          <span class="cancel"><svg><use href="{{ "/assets/icons.svg#cancel" | prepend: site.baseurl }}"></use></svg></span>
+          <span class="icon cancel"><svg><use href="{{ "/assets/icons.svg#cancel" | prepend: site.baseurl }}"></use></svg></span>
           <div class="progress-bar">
             <div class="progress"></div>
           </div>
         </div>
       <!--/template-->
     </div>
+    <div class="page-content">
+      {{ content }}
+    </div>
+    {% include footer.html %}
     {% include scripts.html %}
   </body>
 </html>

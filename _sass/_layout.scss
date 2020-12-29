@@ -390,3 +390,37 @@
     margin-left: 12px;
   }
 }
+
+/* Timers */
+
+#timers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.timer {
+  width: 25%;
+
+  .icon {
+    color: var(--accent-color);
+    cursor: pointer;
+  }
+
+  .progress {
+    height: 4px;
+    width: 0;
+    background-color: var(--accent-color);
+  }
+
+  @include media-query-below($medium) {
+    width: 33.3%;
+  }
+
+  @include media-query-below($small) {
+    width: 50%;
+  }
+
+  @include media-query-below($xsmall) {
+    width: 100%;
+  }
+}
