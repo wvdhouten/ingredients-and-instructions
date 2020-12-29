@@ -398,14 +398,15 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  background-color: var(--background-color);
 }
 
 #timers {
   display: flex;
   flex-wrap: wrap;
+  padding: 3px;
 
   .timer {
-    width: 15%;
     border: 1px solid var(--accent-color);
 
     .controls {
@@ -435,14 +436,6 @@
       height: 4px;
       width: 0;
       background-color: var(--accent-color);
-    }
-
-    @include media-query-below($medium) {
-      width: 33.3%;
-    }
-
-    @include media-query-below($small) {
-      width: 50%;
     }
 
     @include media-query-below($xsmall) {
