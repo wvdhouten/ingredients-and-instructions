@@ -11,7 +11,7 @@ class TimerManager {
   }
 
   static start(duration) {
-    const timerElement = this.template.cloneNode(true);
+    const timerElement = this.template.content.cloneNode(true);
     this.__container.appendChild(timerElement);
 
     duration = this.__parseDuration(duration);
@@ -21,7 +21,7 @@ class TimerManager {
       const secondsRemaining = duration - delta / 1000;
       const timeRemaining = new Date(secondsRemaining * 1000).toISOString().substr(11, 8);
 
-      timerElement.innerText = timeRemaining;
+      timerElement.querySelector('.time').innerText = timeRemaining;
 
       if (secondsRemaining <= 0) this.clear();
     }, 100);
