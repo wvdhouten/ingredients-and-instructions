@@ -412,17 +412,10 @@
     .controls {
       display: flex;
 
-      .status {
-        align-self: flex-start;
-      }
-
       .time {
         flex: 1;
-        align-self: center;
-      }
-
-      .cancel {
-        align-self: flex-end;
+        min-width: 100px;
+        text-align: center;
       }
     }
 
