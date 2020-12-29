@@ -3,6 +3,10 @@
   {% include head.html %}
   <body>
     {% include header.html %}
+    <div class="page-content">
+      {{ content }}
+    </div>
+    {% include footer.html %}
     <div id="timers" class="wrapper">
       <!--template-->
         <div class="timer">
@@ -15,10 +19,6 @@
         </div>
       <!--/template-->
     </div>
-    <div class="page-content">
-      {{ content }}
-    </div>
-    {% include footer.html %}
     {% include scripts.html %}
   </body>
 </html>
