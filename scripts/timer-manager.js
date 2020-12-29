@@ -5,7 +5,6 @@ class TimerManager {
 
   static start(duration) {
     const timerElement = document.createElement('div');
-    timerElement.id = 'timer';
     this.__container.appendChild(timerElement);
 
     duration = this.__parseDuration(duration);
@@ -19,6 +18,10 @@ class TimerManager {
 
       if (secondsRemaining <= 0) this.clear();
     }, 100);
+  }
+
+  static stop(id) {
+
   }
 
   static parseTime(duration) {
