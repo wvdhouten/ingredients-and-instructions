@@ -11,7 +11,9 @@ class TimerManager {
   }
 
   static start(duration) {
-    const timerElement = this.__container.appendChild(this.template.content.cloneNode(true));
+    const fragment = this.template.content.cloneNode(true);
+    const timerElement = fragment.firstChild;
+    this.__container.appendChild(fragment);
 
     duration = this.__parseDuration(duration);
     const start = Date.now();
