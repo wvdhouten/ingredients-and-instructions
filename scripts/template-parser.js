@@ -4,6 +4,23 @@ class TemplateParser {
       element.setAttribute('seed', Helpers.hash(element.getAttribute('seed')));
     });
 
+    document.querySelectorAll('[difficulty]').forEach(element => {
+      switch (element.innerText){
+        case '1':
+          element.innerText = 'Easy Peasy';
+          return;
+        case '2':
+          element.innerText = 'Moderate';
+          return;
+        case '3':
+          element.innerText = 'Challenging';
+          return;
+        case '5':
+          element.innerText = 'Extreme';
+          return; 
+      }
+    });
+
     document.querySelectorAll('a[href^="#"]').forEach(element => {
       const type = element.getAttribute('href').substring(1);
       switch (type) {
