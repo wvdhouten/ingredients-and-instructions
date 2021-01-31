@@ -11,9 +11,7 @@ class TimerManager {
   }
 
   static start(duration) {
-    const fragment = this.template.content.cloneNode(true);
-    const timerElement = fragment.querySelector('.timer');
-    this.__container.appendChild(fragment);
+    const timerElement = this.__createTimerElement();
 
     duration = this.__parseDuration(duration);
     const start = Date.now();
@@ -69,5 +67,16 @@ class TimerManager {
     if (match[3]) duration += parseInt(match[4]) * 60;
     if (match[5]) duration += parseInt(match[6]);
     return duration;
+  }
+
+  static __createTimerElement() {
+    const fragment = this.template.content.cloneNode(true);
+    const timerElement = fragment.querySelector('.timer');
+    this.__container.appendChild(fragment);
+
+    timerElement.querySelector('.status').attachEventListener('click', e => {});
+    timerElement.querySelector('.cancel').attachEventListener('click', e => {});
+
+    return timerElement;
   }
 }
