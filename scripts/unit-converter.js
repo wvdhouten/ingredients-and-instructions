@@ -33,7 +33,7 @@ class UnitConverter {
   }
   static set system(value) {
     localStorage.setItem('system', value);
-    this.convertElements();
+    this.applyConversions();
   }
 
   static init(){
