@@ -4,7 +4,7 @@ title: "My test recipe"
 author: wvdhouten
 description: "A short description"
 date: 2020-12-10 22:00:00
-categories: temporary
+categories: [ temporary ]
 vegetarian: true
 vegan: false
 prepTime: 1h
